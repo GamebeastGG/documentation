@@ -1,9 +1,5 @@
 # Gamebeast Documentation
 
-This repository is based on a template for creating documentation with [Nextra](https://nextra.site).
-
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
-
 ## Local Development
 
 First, run `pnpm i` to install the dependencies.
