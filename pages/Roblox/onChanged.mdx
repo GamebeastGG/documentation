@@ -1,8 +1,15 @@
-## onChanged(config : string/list:string, callback : function)
+## `onChanged( config , callback )`
 
 Allows users to create events tied to changes of a specific config.
 
+## Parameters
+- `config` (string or list of strings): The name of the config(s) when updated that will trigger a callback. You can provide either a single string or a list of strings.
+- `callback` (function): Function to be called upon a config update.
+
 ## Usage
-```lua filename="get"
-local connection = configs.onChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal) end)
+```lua filename="onChanged"
+local connection = configs.onChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal)
+  print("New value: ", newVal)
+  print("Old value: ", oldVal)
+end)
 ```

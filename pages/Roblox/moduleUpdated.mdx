@@ -1,8 +1,17 @@
-## moduleUpdated(callback : function)
+## `moduleUpdated( callback )`
 
 Fires event when a newer configuration module is received from the Roblox website.
 
+## Parameters
+
+- `callback` (function): Function to be called upon a module update.
+
+
 ## Usage
 ```lua filename="moduleUpdated"
-local connection = configs.moduleUpdated(function() end)
+local connection = configs.moduleUpdated(function()
+  print("Updated")
+end)
 ```
+
+

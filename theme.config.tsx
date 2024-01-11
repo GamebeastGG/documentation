@@ -6,9 +6,6 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/GamebeastGG/documentation',
   },
-  chat: {
-    link: 'https://discord.com',
-  },
   docsRepositoryBase: 'https://github.com/GamebeastGG/documentation',
   footer: {
     text: 'Gamebeast Docs',
@@ -16,3 +13,4 @@ const config: DocsThemeConfig = {
 }
 
 export default config
+
