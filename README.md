@@ -1,4 +1,4 @@
-# Nextra Docs Gamebeast 
+# Gamebeast Documentation
 
 This repository is based on a template for creating documentation with [Nextra](https://nextra.site).
 

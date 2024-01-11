@@ -1,11 +1,21 @@
-# Another Page
+# Usage
 
-```js filename="demo.js" {3} copy
-let a = 1;
+## Calling into Gamebeast from Roblox
 
-console.log(a);
+```lua filename="example.lua" {3} copy
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local configs = require(replicatedStorage.Gamebeast)
+
+local health = configs.get({"NPCs", "Spider", "Health"})
+print(health)
+
+configs.onChanged({"NPCs", "Spider", "Health"}, function(newVal)
+  health = newVal
+end)
 ```
 
+
+/*
 ## Component
 
 import { useState } from 'react'
@@ -29,3 +39,4 @@ export const Counter = () => {
 import Counters from '../components/counters'
 
 <Counters />
+*/
