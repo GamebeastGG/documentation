@@ -1,0 +1,8 @@
+## onChanged(config : string/list:string, callback : function)
+
+Allows users to create events tied to changes of a specific config.
+
+## Usage
+```lua filename="get"
+local connection = configs.onChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal) end)
+```
