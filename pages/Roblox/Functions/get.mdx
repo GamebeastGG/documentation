@@ -1,4 +1,4 @@
-# `get( config )`
+# `Get( config )`
 
 This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `config` parameter.
 
@@ -10,13 +10,13 @@ This function is used to retrieve the value of a specific config. It can accept 
 
 ## Usage
 ```lua
-local sunPosition = configs.get("SunPosition")
+local sunPosition = configs.Get("SunPosition")
 ```
 
 ```lua 
-local sunPosition = configs.get({"SunPosition"})
+local sunPosition = configs.Get({"SunPosition"})
 ```
 
 ```lua 
-local health = configs.get({"NPCs", "Spider", "Health"})
+local health = configs.Get({"NPCs", "Spider", "Health"})
 ```

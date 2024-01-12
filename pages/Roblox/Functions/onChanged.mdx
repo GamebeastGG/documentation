@@ -1,4 +1,4 @@
-# `onChanged( config , callback )`
+# `OnChanged( config , callback )`
 
 Allows users to create events tied to changes of a specific config.
 
@@ -9,8 +9,8 @@ Allows users to create events tied to changes of a specific config.
 
 
 ## Usage
-```lua filename="onChanged"
-local connection = configs.onChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal)
+```lua filename="OnChanged"
+local connection = configs.OnChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal)
   print("New value: ", newVal)
   print("Old value: ", oldVal)
 end)

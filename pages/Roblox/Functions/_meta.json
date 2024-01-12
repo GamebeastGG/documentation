@@ -1,5 +1,5 @@
  {
-    "get": "get",
-    "moduleUpdated": "moduleUpdated",
-    "onChanged": "onChanged"
+    "Get": "Get",
+    "ModuleUpdated": "ModuleUpdated",
+    "OnChanged": "OnChanged"
 }
