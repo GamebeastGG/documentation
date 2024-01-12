@@ -1,6 +1,6 @@
 {
-  "GettingStarted" : "GettingStarted",
   "index": "Introduction",
+  "GettingStarted" : "GettingStarted",
   "about": {
     "title": "About",
     "type": "page"
