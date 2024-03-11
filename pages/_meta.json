@@ -2,9 +2,11 @@
   "index": "Introduction",
   "Roblox": "Roblox",
   "UEFN": "UEFN",
-  "about": {
-    "title": "About",
-    "type": "page"
+  "gamebeast": {
+    "title": "Dashboard",
+    "type": "page",
+    "href": "https://gamebeast.gg",
+    "newWindow":true
   },
   "contact": {
     "title": "Contact ↗",

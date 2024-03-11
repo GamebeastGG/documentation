@@ -7,11 +7,11 @@ Use this section to review usage and functions available when using our Roblox S
 ```lua filename="example.lua" copy numbered
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local configs = require(replicatedStorage.Gamebeast)
-
-local health = configs.get({"NPCs", "Spider", "Health"})
+ 
+local health = configs:Get({"NPCs", "Spider", "Health"})
 print(health)
-
-configs.onChanged({"NPCs", "Spider", "Health"}, function(newVal)
+ 
+local conn = configs:OnChanged({"NPCs", "Spider", "Health"}, function(newVal)
   health = newVal
 end)
 ```
