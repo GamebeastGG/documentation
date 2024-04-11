@@ -1,4 +1,5 @@
 {
+    "fireMarker":"FireMarker",
     "get":"Get",
     "moduleUpdated":"ModuleUpdated",
     "onChanged":"OnChanged"

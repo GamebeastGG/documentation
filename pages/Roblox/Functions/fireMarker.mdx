@@ -1,0 +1,29 @@
+# `FireMarker( markerType, player, position, args )`
+
+Used for tracking custom events in the game.
+
+Default markers:
+Login: player, position
+Logout: player, position
+Died: player, position
+
+NOTE: Positions will only be sent if a heatmap is defined for your experience.
+
+## Parameters
+
+- `markerType` (string):  The name of the marker.
+- `player` (player instance or UserId): optional, server only) The instance or user id of the player associated with this marker.
+- `position` (Vector3): (optional) The position associated with this marker. Will display in heatmap if heatmap defined and marker occurred with heatmap area.
+- `args` (dict): (optional) A key value dictionary of user defined arguments.
+
+
+## Usage
+### Server
+```lua
+gamebeast:FireMarker("Jumped", player, player.Character.PrimaryPart.Position)
+```
+
+### Client
+```lua 
+gamebeast:FireMarker("Jumped", player.Character.PrimaryPart.Position)
+```

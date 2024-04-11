@@ -10,7 +10,7 @@ Allows users to create events tied to changes of a specific config.
 
 ## Usage
 ```lua filename="OnChanged"
-local connection = configs:OnChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal)
+local connection = gamebeast:OnChanged({"NPCs", "Spider", "Health"}, function(newVal, oldVal)
   print("New value: ", newVal)
   print("Old value: ", oldVal)
 end)

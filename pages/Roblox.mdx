@@ -8,10 +8,10 @@ Use this section to review usage and functions available when using our Roblox S
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local configs = require(replicatedStorage.Gamebeast)
  
-local health = configs:Get({"NPCs", "Spider", "Health"})
+local health = gamebeast:Get({"NPCs", "Spider", "Health"})
 print(health)
  
-local conn = configs:OnChanged({"NPCs", "Spider", "Health"}, function(newVal)
+local conn = gamebeast:OnChanged({"NPCs", "Spider", "Health"}, function(newVal)
   health = newVal
 end)
 ```
