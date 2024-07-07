@@ -6,7 +6,7 @@ Use this section to review usage and functions available when using our Roblox S
 
 ```lua filename="example.lua" copy numbered
 local replicatedStorage = game:GetService("ReplicatedStorage")
-local configs = require(replicatedStorage.Gamebeast)
+local gamebeast = require(replicatedStorage.Gamebeast)
  
 local health = gamebeast:Get({"NPCs", "Spider", "Health"})
 print(health)
