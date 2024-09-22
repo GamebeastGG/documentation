@@ -1,0 +1,37 @@
+# A/B Testing
+A/B testing let's you test different configurations and versions of features across partitions of servers. The partitions are then managed automatically by the Roblox SDK. From each partition, the SDK will pull live analytics
+and markers and display them in the dashboard. No special programming is required to use the A/B testing values, simply reference
+the configuration with the `Get` method and create a listener via the `OnChanged` method to handle updates as needed.
+
+![A/B testing dashboard view example](/roblox/ABTesting.png)
+
+Notes:
+
+Currently, you can have only one active A/B testing campaign per project.
+
+You will not be able to delete configuration profiles being used in an A/B testing campaign while the campaign is active.
+
+Terminating an A/B testing campaign will update all servers to use your canonical (currently set) configuration profile.
+
+Modifying a configuration profile (or dependent profile) of an active A/B testing will **NOT** affect the active campaign.
+Campaign configurations are frozen after being activated and you will need to terminate and begin a new campaign to make changes,
+which can all happen without shutting down.
+
+## Create a configuration profile
+See the tutorial for creating configuration profiles [here](https://docs.gamebeast.gg/Roblox/Configurations).
+
+## Create an A/B testing campaign
+With your configuration profiles created, you can navigate to the "A/B Testing" tab on the nav menu and click "Add Campaign".
+This will bring up the menu shown below which will allow you to select the profiles you want to include in the campaign and their
+associated distributions. Each campaign you create can contain 2 or more configuration profiles - each profile is a "partition".
+The percentages you assign to each partition must sum to 100%.
+
+![Creating an A/B testing campaign example](/roblox/ABTestingCreate.png)
+
+No special programming is required to use the A/B testing values, simply reference the configuration with the `Get` method and
+create a listener via the `OnChanged` method to handle updates as needed.
+
+## Terminate an A/B testing campaign
+
+To terminate a campaign, simply press the "Terminate Campaign" button at the top right of the campaign view in the dashboard.
+Terminating an A/B testing campaign will update all servers to use your canonical (currently set) configuration profile.
