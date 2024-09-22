@@ -1,5 +1,7 @@
 {
   "GettingStarted": "Getting Started",
   "Configurations": "Remote Configurations",
-  "ABTesting": "A/B Testing"  
+  "ABTesting": "A/B Testing",
+  "Jobs": "Jobs",
+  "UserManagement": "User Management"
 }
