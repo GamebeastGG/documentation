@@ -1,0 +1,64 @@
+# Remote Configurations
+
+Remote configurations make it easy to update and tune values in real-time across all your game servers without shutting down.
+
+![Remote configuration dashboard view example](/roblox/RemoteConfigs.png)
+
+## Creating a configuration profile
+These configurations are managed in the Gamebeast dashboard via "configuration profiles". To create a new configuration profile,
+simply navigate to the "Configurations" tab of the nav bar on the dashboard and press "Add Configuration". This will create a
+blank configuration profile.
+
+Each element you define in your profile can be one of 4 types: a primitive, an array, an object, or a link.
+
+**Primitive**: The Primitive type allows for any raw value such as a number, a string, or boolean. Type is inferred based on your input.
+Ensure you both enter the value correctly and that you're receiving them correctly where you're developing.
+
+**Array**: The Array type allows for an array of primitive values.
+
+Object: An object behaves like a dictionary, allowing you to place more values within that key, which can include other dictionaries.
+After creating an object, you can add elements by hovering over any of the immediate value and pressing the "+" button that appears.
+
+Link: A link is symbolic link which instead of being a raw value points to a different configuration profile. This makes it easy
+to organize different profiles and conceptualize them as "modules" within a main organizational configuration profile.
+
+To select a type, hover over the "#" and click the type you would like to use.
+
+### Importing Roblox modules or existing configurations
+
+By pressing the "Import JSON File" button, you can create a new configuration profile from a JSON file. This makes it easy to
+import configurations from another project or migrate your Roblox modules to Gamebeast after turning them to valid JSON files.
+That process can be done with the following code:
+
+```lua
+local httpService = game:GetService("HttpService")
+local data = {
+    ["Sizes"] = {
+        ["Jimbo"] = {
+            ["SizeMulti"] = 1
+        }
+    }
+}
+
+local encoded = httpService:JSONEncode(data)
+print(encoded)
+-- copy output to a file and upload
+```
+
+**Be aware that Roblox userdata types (Enums, NumberRange, Color3, etc.) and anything else not JSON serializable will be null with
+this code.** Consider modifying the code to convert your data to a serializable representation that you can then use in a profile.
+
+## Target environments (modes)
+For our Roblox solution, the top "Studio Mode" selector determines whether your changes are made to your live game servers or
+Roblox Studio. When enabled, changing configurations, user management actions, and recorded marker and analytics data only affects
+and is only for when running your game in Roblox Studio. This makes testing your game and changes to configurations easy without
+deploying to your live servers. Conversely, any actions taken with "Studio Mode" disabled will publish to and affect your live
+servers.
+
+## Publishing configurations
+Once you've created a configuration profile, you can then select the "Current configuration" for your project. This is the profile
+that will be used across all your game servers. Note that confirming the selection will publish that configuration to the current
+environment.
+Following the initial selection and publication of your configurations, you can edit the profile directly and click the green
+save icon to publish to the current environment.
+You can the status of your publish action under the "Jobs" tab. For more on the Jobs page, see [here](https://docs.gamebeast.gg/Roblox/Jobs). 
