@@ -1,6 +1,6 @@
 {
-    "fireMarker":"FireMarker",
-    "get":"Get",
-    "moduleUpdated":"ModuleUpdated",
-    "onChanged":"OnChanged"
+    "FireMarker":"FireMarker",
+    "Get":"Get",
+    "ModuleUpdated":"ModuleUpdated",
+    "OnChanged":"OnChanged"
 }
