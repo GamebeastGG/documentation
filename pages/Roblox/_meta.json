@@ -3,6 +3,8 @@
   "Configurations": "Remote Configurations",
   "ABTesting": "A/B Testing",
   "Engagement": "Engagement",
+  "Audience Segmentation" : "Audience Segmentation",
+  "LEScheduler" : "Live Event Scheduler",
   "UserManagement": "User Management",
   "Jobs": "Jobs"
 }
