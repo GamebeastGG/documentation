@@ -1,6 +1,7 @@
 # Remote Configurations
 
-Remote configurations make it easy to update and tune values in real-time across all your game servers without shutting down.
+Remote configurations make it easy to update and tune values in real-time across all your game servers without shutting down on
+users, allowing for uninterrupted engagement.
 
 ![Remote configuration dashboard view example](/roblox/RemoteConfigs.png)
 
@@ -16,10 +17,10 @@ Ensure you both enter the value correctly and that you're receiving them correct
 
 **Array**: The Array type allows for an array of primitive values.
 
-Object: An object behaves like a dictionary, allowing you to place more values within that key, which can include other dictionaries.
+**Object**: An object behaves like a dictionary, allowing you to place more values within that key, which can include other dictionaries.
 After creating an object, you can add elements by hovering over any of the immediate value and pressing the "+" button that appears.
 
-Link: A link is symbolic link which instead of being a raw value points to a different configuration profile. This makes it easy
+**Link**: A link is symbolic link which instead of being a raw value points to a different configuration profile. This makes it easy
 to organize different profiles and conceptualize them as "modules" within a main organizational configuration profile.
 
 To select a type, hover over the "#" and click the type you would like to use.
@@ -32,6 +33,7 @@ That process can be done with the following code:
 
 ```lua
 local httpService = game:GetService("HttpService")
+
 local data = {
     ["Sizes"] = {
         ["Jimbo"] = {
@@ -45,7 +47,7 @@ print(encoded)
 -- copy output to a file and upload
 ```
 
-**Be aware that Roblox userdata types (Enums, NumberRange, Color3, etc.) and anything else not JSON serializable will be null with
+**Note: Be aware that Roblox userdata types (Enums, NumberRange, Color3, etc.) and anything else not JSON serializable will be null with
 this code.** Consider modifying the code to convert your data to a serializable representation that you can then use in a profile.
 
 ## Target environments (modes)

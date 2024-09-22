@@ -6,12 +6,9 @@ the configuration with the `Get` method and create a listener via the `OnChanged
 ![A/B testing dashboard view example](/roblox/ABTesting.png)
 
 Notes:
-
-Currently, you can have only one active A/B testing campaign per project.
-
-You will not be able to delete configuration profiles being used in an A/B testing campaign while the campaign is active.
-
-Terminating an A/B testing campaign will update all servers to use your canonical (currently set) configuration profile.
+ - Currently, you can have only one active A/B testing campaign per project.
+ - You will not be able to delete configuration profiles being used in an A/B testing campaign while the campaign is active.
+ - Terminating an A/B testing campaign will update all servers to use your canonical (currently set) configuration profile.
 
 Modifying a configuration profile (or dependent profile) of an active A/B testing will **NOT** affect the active campaign.
 Campaign configurations are frozen after being activated and you will need to terminate and begin a new campaign to make changes,
