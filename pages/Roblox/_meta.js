@@ -1,4 +1,4 @@
-{
+module.exports = {
   "GettingStarted": "Getting Started",
   "Configurations": "Remote Configurations",
   "ABTesting": "A/B Testing",

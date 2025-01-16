@@ -1,4 +1,4 @@
-{
+module.exports = {
     "get":"Get",
     "onChanged":"OnChanged",
     "fireMarker":"FireMarker",
