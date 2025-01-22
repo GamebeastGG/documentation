@@ -1,0 +1,18 @@
+# SDK Services
+
+All gamebeast services must be fetched through the `:GetService` method of the Gamebeast module.
+
+```lua filename="server-markers.lua" copy numbered
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
+
+local GamebeastMarkers = Gamebeast:GetService("Markers")
+```
+
+Types for each service are available directly through the Gamebeast module and can optionally be casted onto the returned service module.
+
+```lua
+local GamebeastMarkers = Gamebeast:GetService("Markers") :: Gamebeast.MarkersService
+```
+
+*Some* services can only be accessed on the server or client, but not both, such as the `Markers` service. Its important to review the service documentation to understand where it can be used. 

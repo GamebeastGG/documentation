@@ -1,17 +1,90 @@
 # Roblox SDK
 
-Use this section to review usage and functions available when using our Roblox SDK. 
+Use this section to review required setup functions and examples for the Roblox SDK.
 
 ## Calling into Gamebeast from Roblox
 
-```lua filename="example.lua" copy numbered
-local replicatedStorage = game:GetService("ReplicatedStorage")
-local gamebeast = require(replicatedStorage.Gamebeast)
+```lua filename="server.lua" copy numbered
+-- Server Script
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
  
-local health = gamebeast:Get({"NPCs", "Spider", "Health"})
-print(health)
+Gamebeast:Setup({
+    key = "abcd-efgh-1234-5678",
+})
+```
+
+```lua filename="client.lua" copy numbered
+-- Client Script
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
  
-local conn = gamebeast:OnChanged({"NPCs", "Spider", "Health"}, function(newVal)
-  health = newVal
-end)
+Gamebeast:Setup({})
+```
+
+## SDK Methods
+
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+```
+
+## `:Setup(markerType, value, position)`
+
+This function must be called once on the server and client to initialize the Gamebeast SDK.
+Attempting to call any other SDK method before calling `:Setup` will result in an error.
+
+### Parameters
+
+- `setupConfig : ClientSetupConfig | ServerSetupConfig`: The required config table for the SDK.
+
+### Types
+
+```luau
+type SDKSettings = {
+	-- Enables SDK warnings for API misuse, internal errors, etc.
+	sdkWarningsEnabled : boolean,
+	-- Enables stack trace inclusion with warning messages.
+	includeWarningStackTrace : boolean,
+}
+type ServerSetupConfig = {
+	key : string | Secret,
+	sdkSettings : SDKSettings?
+}
+
+type ClientSetupConfig = {
+	sdkSettings : SDKSettings?
+}
+```
+
+### Usage
+```lua
+-- Server
+Gamebeast:Setup({
+    key = "abcd-efgh-1234-5678",
+    sdkSettings = {
+        sdkWarningsEnabled = true,
+        includeWarningStackTrace = false,
+    }
+})
+
+-- Client
+Gamebeast:Setup({
+    sdkSettings = {
+        sdkWarningsEnabled = true,
+        includeWarningStackTrace = false,
+    }
+})
+```
+
+## `:GetService(serviceName)`
+This method will attempt to fetch a service module from the Gamebeast SDK.
+All available services can be found documented [here.](/Roblox/API)
+
+### Parameters
+
+- `serviceName : string`: The name of the service.
+
+### Usage
+```lua
+GamebeastMarkers = Gamebeast:GetService("Markers") :: Gamebeast.MarkersService
 ```
