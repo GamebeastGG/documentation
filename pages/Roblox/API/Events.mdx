@@ -1,0 +1,54 @@
+# Events
+Context:
+`server`
+
+This API is used to get event config data from user defined events on the Gamebeast platform. 
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+local GamebeastEvents = Gamebeast:GetService("Events")
+```
+
+## `:GetEventData(eventName)`
+This function sends a marker with the specified value to Gamebeast.
+
+### Parameters
+
+- `eventName : string`: The name of the event. 
+
+**Returns:** `{[string] : any} | any`
+### Usage
+```lua
+local EventData = GamebeastEvents:GetEventData("NewYears")
+```
+
+## `:OnStart(eventName, callback)`
+This method fires a callback function when the specified event starts.
+
+### Parameters
+
+- `eventName : string`: The name of the event. 
+- `callback : (eventData : {[string] : any}) -> ()`: Callback function fired when the event starts.
+
+**Returns:** `RBXScriptSignal`
+### Usage
+```lua
+GamebeastEvents:OnStart("NewYears", function(eventData)
+    print("Event started!")
+end)
+```
+
+## `:OnEnd(eventName, callback)`
+This method fires a callback function when the specified event ends.
+
+### Parameters
+
+- `eventName : string`: The name of the event. 
+- `callback : (eventData : {[string] : any}) -> ()`: Callback function fired when the event ends.
+
+**Returns:** `RBXScriptSignal`
+### Usage
+```lua
+GamebeastEvents:OnEnd("NewYears", function(eventData)
+    print("Event ended!")
+end)
+```

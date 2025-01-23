@@ -1,0 +1,55 @@
+# Markers
+Context:
+`server`
+
+This API is used to send markers to the Gamebeast platform. 
+
+Below is a list of reserved markers. These marker names are used by the SDK and **should not** be sent by developers.
+- Died
+- Logout
+- Login
+- Purchase
+- Chat
+  
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+local GamebeastMarkers = Gamebeast:GetService("Markers")
+```
+
+## `:SendMarker(markerType, value, position)`
+This function sends a marker with the specified value to Gamebeast.
+
+### Parameters
+
+- `markerType : string`: The name of the Marker.
+- `value : number | {[string] : any}`: The value of the marker.
+- `position : Vector3?`: The optional marker world position for heatmap data. 
+
+### Usage
+```lua
+GamebeastMarkers:SendMarker("Coins", 50)
+
+-- With position
+local Character = game:GetService("Players").LocalPlayer.Character
+GamebeastMarkers:SendMarker("Coins", 50, Character.PrimaryPart.Position)
+```
+
+## `:SendPlayerMarker(player, markerType, value, position)`
+This function sends a marker associated with a specific player to Gamebeast. 
+
+### Parameters
+
+- `player : Player`: The player instance associated with the marker.
+- `markerType : string`: The name of the Marker.
+- `value : number | {[string] : any}`: The value of the marker.
+- `position : Vector3?`: The optional marker world position for heatmap data. 
+
+### Usage
+```lua
+local Player = game:GetService("Players").Player1
+
+GamebeastMarkers:SendPlayerMarker(Player, "Coins", 50)
+
+-- With position
+GamebeastMarkers:SendMarker(Player, "Coins", 50, Player.Character.PrimaryPart.Position)
+```

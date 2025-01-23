@@ -1,4 +1,4 @@
-{
+module.exports = {
   "index": "Introduction",
   "Roblox": "Roblox",
   "UEFN": "UEFN",
@@ -6,7 +6,7 @@
     "title": "Dashboard",
     "type": "page",
     "href": "https://gamebeast.gg",
-    "newWindow":true
+    "newWindow": true
   },
   "contact": {
     "title": "Contact ↗",
@@ -14,4 +14,4 @@
     "href": "https://twitter.com/gamebeastgg",
     "newWindow": true
   }
-}
+};

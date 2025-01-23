@@ -75,7 +75,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/GamebeastGG/documentation',
   footer: {
-    text: 'Gamebeast Docs',
+    
   },
 }
 
