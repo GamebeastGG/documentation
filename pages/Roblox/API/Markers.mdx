@@ -4,12 +4,12 @@ Context:
 
 This API is used to send markers to the Gamebeast platform. 
 
-
-**Default markers**
-- **Login**: player, position
-- **Logout**: player, position
-- **Died**: player, position
-
+Below is a list of reserved markers. These marker names are used by the SDK and **should not** be sent by developers.
+- Died
+- Logout
+- Login
+- Purchase
+- Chat
   
 ```lua
 local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
