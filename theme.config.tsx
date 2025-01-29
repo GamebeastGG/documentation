@@ -57,7 +57,7 @@ const config: DocsThemeConfig = {
     <>
       <title>{title ? title + ' | Gamebeast SDK': 'Optimize Your Game'} </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="Optimize Your Game" />
+      <meta property="og:title" content="Gamebeast Docs" />
       <meta property="og:description" content="Optimize your game with the Gamebeast SDK" />
       <meta
           name="og:title"

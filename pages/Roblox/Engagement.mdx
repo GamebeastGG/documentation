@@ -6,6 +6,22 @@ To send markers to Gamebeast, you must first fetch the [`Markers`](/Roblox/API/M
 
 By default, Gamebeast also sends a number of built-in markers to track generic player interactions, such as player joins, leaves, and chats.
 
-### Visualizing Markers
-Marker data can be visualized in the Gamebeast dashboard. You can view graphs of player interactions, as well as a list of all markers sent to Gamebeast.
+## Types of markers
 
+There are two types of markers you can send to Gamebeast, Player and Global markers. All of these marker types can be visualized through the [query builder](/Roblox/QueryBuilder).
+
+### Player markers
+
+Player markers are used to track player-specific interactions and events. These markers are tied to a specific player and can be used to track things like player fails, eliminations, and other player-specific events.
+
+You can view markers sent with a specific player by navigating to the player's profile in the Gamebeast [user management](/Roblox/UserManagement) dashboard
+
+### Global markers
+
+Global markers are used to track global interactions and events that are not tied to a specific player. These markers can be used to track things like game starts, game ends, and other global events.
+
+## Marker Quota
+
+While there is no hard rate limits on how often you can send markers, Gamebeast has a quota system in place to prevent abuse. If you exceed your quota, markers will be dropped until your quota resets, or you increase your quota through the project's billing page.
+
+It's important to be mindful of how many markers you are sending to Gamebeast to avoid hitting your quota. You can view a usage graph of your markers in the Gamebeast dashboard to help you understand how close you are to your quota.

@@ -1,0 +1,38 @@
+import YoutubeEmbed from 'components/YoutubeEmbed';
+
+# Query Builder & Boards
+
+The query builder is a great way to view and analyze the markers sent to Gamebeast from your experience. With the query builder, you can filter and group your markers to create custom visualizations that help you understand how players are interacting with your experience.
+
+<YoutubeEmbed embedId="btXB5SiIWXo"/>
+
+## Creating a query board
+To visualize marker data from your experience, navigate to the `Boards` page in the Gamebeast dashboard.
+Boards are how you organize your queries. You can create multiple boards to group your queries by different categories or use cases.
+
+To create a new board, click the `New Board` button in the top left corner of the `Boards` page, and give your board a name.
+
+### Adding a query visualization
+
+Once you've created a board, you can click "Add to board" to add a new query visualization to your board.
+
+On the right side of visualization setup, you can configure the data source (Metric) for your query and group your markers by various properties & arguments
+
+#### Metrics
+
+The metrics field is where you select your data source for the query. You can choose from a list of available metrics, such as player joins, player leaves, and custom markers sent from your experience.
+
+On each metric, you can filter the data by its properties to pull only relevant data for your visualization.
+
+#### Global Filters
+
+Global filters allow you to filter all of your metrics by a shared property. For example, if your metrics were `SpellUsed` and `SpellEquipped`, you could filter both metrics simutaneously by the `SpellName` property.
+
+#### Breakdowns
+
+Finally, breakdowns allow you visualize your data by a specific property. For example, you could breakdown your data by `SpellName` to see how many times each spell was used in your experience.
+
+### Configuring the visualization
+On the top of the visualization preview, you can filter the data by time range, and choose from a variety of visualization types, such as line charts, bar charts, and pie charts.
+
+With the "Compare" dropdown, you can overlay a previous time range on your visualization to compare how your data has changed over time.
