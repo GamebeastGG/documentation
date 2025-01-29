@@ -10,9 +10,10 @@ const DiscordCTA = () => {
         fetch('https://discord.com/api/guilds/1261798653962489866/widget.json')
             .then(res => res.json())
             .then(data => setDiscordData(data))
+            .catch(err => {
+                console.error("Failed to get Discord data", err)
+            })
     }, [])
-
-    console.log(theme)
 
     return <>
         <h1 className="text-xl font-semibold pb-2 mt-4">Join our Discord to stay up to date!</h1>

@@ -1,6 +1,7 @@
 module.exports = {
   "index": "Introduction",
-  "Roblox": "Roblox",
+  "GettingStarted": "Getting Started",
+  "Roblox" : "Roblox",
   "UEFN": "UEFN",
   "gamebeast": {
     "title": "Dashboard",

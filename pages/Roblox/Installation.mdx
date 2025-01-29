@@ -1,0 +1,64 @@
+# Installation
+Getting started with Gamebeast in Roblox is easy. This guide will walk you through the process of installing the Gamebeast SDK and configuring your API key.
+
+If you haven't created a project in the Gamebeast dashboard yet, please start with the [Getting Started](/GettingStarted) guide.
+
+## Installing the SDK
+To add the SDK, you'll first need to install the Gamebeast plugin for Roblox Studio, which can be found [here](https://create.roblox.com/marketplace/asset/15951241108/Gamebeast%3Fkeyword=&pageNumber=&pagePosition=). After downloading, the plugin should appear under "Gamebeast" in the Plugins tab of Roblox Studio.
+
+![PluginBar](/imgs/roblox/functions/manageplugins.png)
+
+Next, Click the Add/Update SDK button to automatically add our Roblox SDK and Gamebeast module to ReplicatedStorage. You will be prompted to give the plugin permission to insert scripts into your experience, select "**Allow**".
+
+![t](/imgs/roblox/functions/accept.png)
+
+To make sure your Gamebeast plugin always functions properly, navigate to the Plugins tab of Roblox Studio, click "Manage Plugins", and enable the "Auto Update" option for Gamebeast.
+
+![x](/imgs/roblox/functions/PluginManagement.png)
+
+When you open an experience in Roblox Studio that contains the Gamebeast SDK, the plugin will automatically output a warning if your SDK is out of date. Simply click the plugin to update your SDK. 
+
+Finally, in Roblox Studio, go to the Home tab and press the "Game Settings" buttons. Under the "Security" tab, enable the "Allow HTTP Requests" and "Enabled Studio Access to API Services" options. This allows the Gamebeast SDK to communicate with the dashboard and use Roblox services for different features. 
+
+![x](/imgs/roblox/functions/security.png)
+
+## Start the SDK and Configure API Key
+The next step of getting your data on the Gamebeast dashboard is to start the SDK and configure your API key.
+
+To start the SDK, you'll need to add the following code to scripts in your experience:
+
+Server script, such as a `ServerScriptService` script: 
+```lua filename="server.lua" copy numbered
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
+ 
+Gamebeast:Setup({
+    key = "abcd-efgh-1234-5678",
+})
+```
+
+Client script, such as a `StarterPlayerScript` script: 
+```lua filename="client.lua" copy numbered
+-- Client Script
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
+ 
+Gamebeast:Setup()
+```
+
+Next, we'll need to configure the API key for your project.
+
+To do this, we'll need to go back to the project settings page on the dashboard.
+
+1. Navigate to the project settings page by clicking "Project Settings" on the left side of the dashboard.
+2. Create a new API key by pressing the "Create API Key" button.
+3. Copy the API key before closing the popup. **Make sure to hold onto this because you won't be able to see it again!**
+4. In the Roblox Studio script, replace the placeholder key with the API key you just created.
+
+```lua
+key = "abcd-efgh-1234-5678", -- Replace with your API key.
+```
+
+And that's it! You're now ready to start sending data to the Gamebeast dashboard.
+
+To start using the SDK in your code, check out the [SDK Services](/Roblox/API) documentation.
