@@ -48,7 +48,7 @@ If you're interested in additional functionality, please reach out.
 local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
 ```
 
-## :Setup(markerType, value, position)
+## :Setup(setupConfig)
 <ReturnType/>
 
 This function must be called once on the server and client to initialize the Gamebeast SDK.
@@ -73,10 +73,6 @@ type ServerSetupConfig = {
 	key : string | Secret,
 	sdkSettings : SDKSettings?
 }
-
-type ClientSetupConfig = {
-	sdkSettings : SDKSettings?
-}
 ```
 
 ### Usage
@@ -92,6 +88,15 @@ Gamebeast:Setup({
 
 -- Client
 Gamebeast:Setup()
+```
+
+if `sdkSettings` is not provided, the following are the defaults that will be used.
+
+```lua
+{
+    sdkWarningsEnabled = true,
+    includeWarningStackTrace = false,
+}
 ```
 
 ## :GetService(serviceName)
