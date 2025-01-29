@@ -3,8 +3,7 @@ module.exports = {
   "Configurations": "Remote Configurations",
   "ABTesting": "A/B Testing",
   "Engagement": "Engagement Markers",
-  "AudienceSegmentation" : "Audience Segmentation",
-  "LEScheduler" : "Live Event Scheduler",
+  "UserCohorts" : "User Cohorts",
   "UserManagement": "User Management",
-  "Jobs": "Jobs"
+  "Jobs": "Dashboard Jobs"
 }

@@ -1,8 +1,12 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+
 # Roblox SDK
 
 Use this section to review required setup functions and examples for the Roblox SDK.
 
 Refer to the [Getting started](/Roblox/GettingStarted) section for a for installation information.
+
 
 ## Calling into Gamebeast from Roblox
 
@@ -21,7 +25,7 @@ Gamebeast:Setup({
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
  
-Gamebeast:Setup({})
+Gamebeast:Setup()
 ```
 
 ## SDK Usage Considerations
@@ -44,14 +48,17 @@ If you're interested in additional functionality, please reach out.
 local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
 ```
 
-## `:Setup(markerType, value, position)` 
+## :Setup(markerType, value, position)
+<ReturnType/>
 
 This function must be called once on the server and client to initialize the Gamebeast SDK.
 Attempting to call any other SDK method before calling `:Setup` will result in an error.
 
-### Parameters
-
-- `setupConfig : ClientSetupConfig | ServerSetupConfig`: The required config table for the SDK.
+<ParameterList name="Parameters">
+    <Parameter name="setupConfig" type="ServerSetupConfig?">
+        The required config table for the SDK.
+    </Parameter>
+</ParameterList>
 
 ### Types
 
@@ -84,21 +91,19 @@ Gamebeast:Setup({
 })
 
 -- Client
-Gamebeast:Setup({
-    sdkSettings = {
-        sdkWarningsEnabled = true,
-        includeWarningStackTrace = false,
-    }
-})
+Gamebeast:Setup()
 ```
 
-## `:GetService(serviceName)`
+## :GetService(serviceName)
+<ReturnType type="GamebeastService"/>
 This method will attempt to fetch a service module from the Gamebeast SDK.
 All available services can be found documented [here.](/Roblox/API)
 
-### Parameters
-
-- `serviceName : string`: The name of the service.
+<ParameterList name="Parameters">
+    <Parameter name="serviceName" type="string">
+        The name of the SDK service.
+    </Parameter>
+</ParameterList>
 
 ### Usage
 ```lua

@@ -1,29 +1,32 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
 # Markers
-Context:
-`server`
+<RunContext contexts={["server"]}/>
 
 This API is used to send markers to the Gamebeast platform. 
-
-Below is a list of reserved markers. These marker names are used by the SDK and **should not** be sent by developers.
-- Died
-- Logout
-- Login
-- Purchase
-- Chat
   
 ```lua
 local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
 local GamebeastMarkers = Gamebeast:GetService("Markers")
 ```
 
-## `:SendMarker(markerType, value, position)`
-This function sends a marker with the specified value to Gamebeast.
+## :SendMarker(markerType, value, position)
+<ReturnType/>
+This method sends a marker with the specified value to Gamebeast.
 
-### Parameters
-
-- `markerType : string`: The name of the Marker.
-- `value : number | {[string] : any}`: The value of the marker.
-- `position : Vector3?`: The optional marker world position for heatmap data. 
+<ParameterList>
+    <Parameter name="markerType" type="string">
+        The name of the Marker.
+    </Parameter>
+    <Parameter name="value" type="number | {[string] : any}">
+        The value of the marker.
+    </Parameter>
+    <Parameter name="position" type="Vector3?">
+        The optional marker world position for heatmap visualization.
+    </Parameter>
+</ParameterList>
 
 ### Usage
 ```lua
@@ -34,15 +37,24 @@ local Character = game:GetService("Players").LocalPlayer.Character
 GamebeastMarkers:SendMarker("Coins", 50, Character.PrimaryPart.Position)
 ```
 
-## `:SendPlayerMarker(player, markerType, value, position)`
+## :SendPlayerMarker(player, markerType, value, position)
+<ReturnType/>
 This function sends a marker associated with a specific player to Gamebeast. 
 
-### Parameters
-
-- `player : Player`: The player instance associated with the marker.
-- `markerType : string`: The name of the Marker.
-- `value : number | {[string] : any}`: The value of the marker.
-- `position : Vector3?`: The optional marker world position for heatmap data. 
+<ParameterList>
+    <Parameter name="player" type="Player">
+        The player instance associated with the marker.
+    </Parameter>
+    <Parameter name="markerType" type="string">
+        The name of the Marker.
+    </Parameter>
+    <Parameter name="value" type="number | {[string] : any}">
+        The value of the marker.
+    </Parameter>
+    <Parameter name="position" type="Vector3?">
+        The optional marker world position for heatmap visualization.
+    </Parameter>
+</ParameterList>
 
 ### Usage
 ```lua
@@ -51,5 +63,5 @@ local Player = game:GetService("Players").Player1
 GamebeastMarkers:SendPlayerMarker(Player, "Coins", 50)
 
 -- With position
-GamebeastMarkers:SendMarker(Player, "Coins", 50, Player.Character.PrimaryPart.Position)
+GamebeastMarkers:SendPlayerMarker(Player, "Coins", 50, Player.Character.PrimaryPart.Position)
 ```

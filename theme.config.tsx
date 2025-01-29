@@ -2,6 +2,8 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 import { useConfig } from 'nextra-theme-docs'
 
+import Footer from 'components/Footer'
+
 const config: DocsThemeConfig = {
   logo: (
     <>
@@ -75,7 +77,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/GamebeastGG/documentation',
   footer: {
-    
+    component : <Footer/>
   },
 }
 

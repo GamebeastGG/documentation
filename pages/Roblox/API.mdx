@@ -1,3 +1,5 @@
+import RunContext from '/components/RunContext.tsx';
+
 # SDK Services
 
 All gamebeast services must be fetched through the `:GetService` method of the Gamebeast module.
@@ -15,4 +17,5 @@ Types for each service are available directly through the Gamebeast module and c
 local GamebeastMarkers = Gamebeast:GetService("Markers") :: Gamebeast.MarkersService
 ```
 
-*Some* services can only be accessed on the server or client, but not both, such as the `Markers` service. Its important to review the service documentation to understand where it can be used. 
+*Some* services can only be accessed on the server or client, but not both, such as the `Markers` service. Look for these icons at the top of the documentation page to understand where a service can be used:
+<RunContext contexts={["server", "client"]} />

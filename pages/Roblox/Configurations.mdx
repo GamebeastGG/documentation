@@ -1,14 +1,19 @@
+import YoutubeEmbed from 'components/YoutubeEmbed';
+
 # Remote Configurations
 
 Remote configurations make it easy to update and tune values in real-time across all your game servers without shutting down on
 users, allowing for uninterrupted engagement.
 
-![Remote configuration dashboard view example](/roblox/RemoteConfigs.png)
+<YoutubeEmbed embedId="iwlFV3YvQ_s"/>
+
 
 ## Creating a configuration profile
 These configurations are managed in the Gamebeast dashboard via "configuration profiles". To create a new configuration profile,
 simply navigate to the "Configurations" tab of the nav bar on the dashboard and press "Add Configuration". This will create a
 blank configuration profile.
+
+![RemoteConfigsPage](/roblox/remoteConfigs.png)
 
 Each element you define in your profile can be one of 4 types: a primitive, an array, an object, or a link.
 
@@ -64,10 +69,10 @@ that will be used across all your game servers. Note that confirming the selecti
 environment.
 Following the initial selection and publication of your configurations, you can edit the profile directly and click the green
 save icon to publish to the current environment.
-You can the status of your publish action under the "Jobs" tab. For more on the Jobs page, see [here](https://docs.gamebeast.gg/Roblox/Jobs).
+You can the status of your publish action under the "Jobs" tab. For more on the Jobs page, see [here](/Roblox/Jobs).
 
 ## Using configurations
 
-Using configuration is simple. Use the [`Get`](https://docs.gamebeast.gg/Roblox/SDK%20Functions/get) method to reference a
-configuration and the [`OnChanged`](https://docs.gamebeast.gg/Roblox/SDK%20Functions/onChanged) method to listen for and handle
+Using configuration is simple. Use the [`Get`](/Roblox/API/Configs#getpath) method to reference a
+configuration and the [`OnChanged`](/Roblox/API/Configs#onchangedpath-callback) method to listen for and handle
 updates.

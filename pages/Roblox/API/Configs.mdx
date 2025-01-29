@@ -1,0 +1,89 @@
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import ReturnType from '/components/ReturnType.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Configs
+<RunContext contexts={["server", "client"]}/>
+
+This API is used to retrieve the values of Gamebeast configs.
+
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+local GamebeastConfigs = Gamebeast:GetService("Configs")
+```
+
+## :Get(path)
+<ReturnType type="{[string] : any} | any"/>
+This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `path` parameter. 
+The :Get method will yeild until the configs are loaded from Gamebeast.
+
+<ParameterList>
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+</ParameterList>
+
+### Usage 
+```lua
+-- string
+local SunPosition = GamebeastConfigs:Get("SunPosition")
+
+-- Path (array of strings)
+local SunPosition = GamebeastConfigs:Get({"SunPosition"})
+local Health = GamebeastConfigs:Get({"NPCs", "Spider", "Health"})
+```
+
+## :OnChanged(path, callback)
+<ReturnType type="RBXScriptSignal"/>
+This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `path` parameter. 
+
+<ParameterList name="Parameters">
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+    <Parameter name="callback" type="(newValue : any, oldValue : any) -> ()">
+        Callback function fired when the config on the provided path changes.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+-- string
+GamebeastConfigs:OnChanged("SunPosition", function(newValue, oldValue)
+    print("New config", newValue)
+end)
+
+-- Path (array of strings)
+local ChangedConnection = GamebeastConfigs:OnChanged({"Lighting", "Atmosphere"}, function(newValue, oldValue)
+    print("New config", newValue)
+end)
+```
+
+## :IsReady()
+<ReturnType type="boolean"/>
+
+Returns a boolean indicating whether the config are loaded and ready to be used.
+
+### Usage
+```lua
+if GamebeastConfigs:IsReady() then
+    print("Configs are ready!")
+end
+```
+
+## :OnReady(callback)
+<ReturnType type="RBXScriptSignal"/>
+This method fires a callback once the configs are loaded from Gamebeast.
+
+<ParameterList name="Parameters">
+    <Parameter name="callback" type="(configs : any) -> ()">
+        Callback function fired when the configs are ready.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+GamebeastConfigs:OnReady(function(configs)
+    print("Configs are ready!", configs)
+end)
+```
