@@ -7,7 +7,7 @@ Jobs are the actions that Gamebeast performs on your Roblox game servers. These 
 ## Viewing Jobs
 Jobs can be viewed in the Gamebeast dashboard under the "Jobs" tab. Here, you can see the status of each job, the time it was created, and the type of job it is.
 
-![JobsPage](/imgs/roblox/Jobs.png)
+![JobsPage](/imgs/roblox/jobs/jobs-page.png)
 
 When a job is created, it is placed in a queue and processed in the order it was received. For a job to be processed, there must be at least one active game server or studio instance in play mode with the Roblox SDK running.
 
@@ -25,6 +25,22 @@ It's common for these jobs to be processed in a matter of seconds, but the time 
 
 ## Custom Jobs
 
-Coming soon!
+Custom jobs are developer-defined jobs that can be created and executed onto your game servers. These jobs can be used to perform a wide range of tasks, such as updating game data, running scripts, or sending messages to players.
 
-<DiscordCTA/>
+Custom jobs can be created through the dashboard, and their logic is defined through the [SDK Jobs API](/Roblox/API/Jobs).
+
+![CustomJob](/imgs/roblox/jobs/custom-job-list.png)
+
+### Custom job options
+
+Custom jobs have options that change how the job behaves when executed.
+
+<br/>
+<img src="/imgs/roblox/jobs/custom-job-create.png" alt="Custom Job" width="60%"/>
+
+- **Host only mode**: When enabled, the job will only be executed on a single server known as the host instead of all servers.
+- **Run asynchronously**: When enabled, the job that is next in the queue will not wait for this job to finish executing.
+
+### Running custom jobs
+
+To run a custom job, click the "Run" button next to the
