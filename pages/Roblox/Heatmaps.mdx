@@ -1,0 +1,62 @@
+# Heatmaps
+Heatmaps are a powerful way to visualize user interactions in your Roblox experience. They allow you to see where players are spending their time, which areas are most popular, and how players are moving through your game.
+
+Heatmaps can be created using any marker data sent from your experience that has the position argument filled, such as player joins, player leaves, or custom markers.
+
+![Heatmap Example](/imgs/roblox/HeatmapExample.png)
+
+## Creating a Heatmap
+
+### Generating the heatmap visualization
+To create a heatmap, you first need to generate the heatmap visualization through the Gamebeast plugin in Roblox Studio.
+
+To do this, open the Gamebeast plugin in Roblox Studio and navigate to the "Heatmap" tab. 
+To edit, create, or delete a heatmap visualization, you'll need to provide an API key, [which can be created through the dashboard](/Roblox/Installation#creating-an-api-key).
+
+#### Heatmap generation controls
+
+![Heatmap Controls](/imgs/roblox/HeatmapControls.png)
+
+After entering your API key, you can create a new heatmap visualization by clicking the **"Create Heatmap"** button, or modify an existing heatmap by selecting it from list.
+You can also delete a heatmap visualization by selecting it from the list and clicking the trash icon.
+
+The menu for creating or editing a heatmap visualization contains the following options:
+
+---
+##### **Name**
+
+The name of the heatmap visualization.
+The name can be used to identify the heatmap in the Gamebeast dashboard.
+
+---
+
+##### **Edit Points** 
+
+These buttons allow you to quickly edit the points that make up the rendered region of the heatmap in the workspace.
+
+Clicking "A" or "B" will automatically select and move your camera to the point A or B, respectively, allowing you to edit the points.
+
+Clicking the square button will automatically set point A and B to the bounds of what you have selected in the workspace.
+
+---
+##### **Image** 
+
+The image preview of the heatmap visualization. This is generated from the points you edit. 
+
+By pressing the "Render Image" button, the heatmap will be rendered and the image will be updated. This process may take a 10-20 seconds, depending on the size of the area you are rendering and the performance of your device.
+
+---
+##### **Description**
+
+A brief description of the heatmap visualization.
+This can be used to provide context for the heatmap to collaborators, such as what area it represents.
+
+---
+
+### Creating a heatmap in the Gamebeast dashboard
+Similarly to [how you can make other visualizations in the Query Builder](/Roblox/QueryBuilder), heatmaps are utilized through the Gamebeast dashboard.
+To create a heatmap, navigate to the `Boards` page in the Gamebeast dashboard. Here, you can create a new board or add to an existing board.
+
+When creating or editing a query, select the **"Heatmap"** tab on the top right, and select a map. This will allow you to visualize your data as a heatmap.
+
+![Heatmap Tab](/imgs/roblox/HeatmapTab.png)
