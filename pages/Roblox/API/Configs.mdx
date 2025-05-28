@@ -35,7 +35,7 @@ local Health = GamebeastConfigs:Get({"NPCs", "Spider", "Health"})
 
 ## :OnChanged(path, callback)
 <ReturnType type="RBXScriptSignal"/>
-This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `path` parameter. 
+This function is used to listen to the value a specific config changing. It can accept either a single string or a list of strings as the `path` parameter. 
 
 <ParameterList name="Parameters">
     <Parameter name="path" type="string | {string}">
@@ -56,6 +56,33 @@ end)
 -- Path (array of strings)
 local ChangedConnection = GamebeastConfigs:OnChanged({"Lighting", "Atmosphere"}, function(newValue, oldValue)
     print("New config", newValue)
+end)
+```
+
+## :Observe(path, callback)
+<ReturnType type="RBXScriptSignal"/>
+Similar to :OnChanged, this function fires the provided callback when the target config either changed, **or** becomes available after being initially fetched from Gamebeast. 
+
+<ParameterList name="Parameters">
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+    <Parameter name="callback" type="(newValue : any, oldValue : any) -> ()">
+        Callback function fired when the config on the provided path is ready, or is changed.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+-- string
+GamebeastConfigs:Observe("SunPosition", function(newValue, oldValue)
+    -- Old value will be nil if the config was not previously available
+    print("Config is ready/changed", newValue)
+end)
+
+-- Path (array of strings)
+local ObserveConnection = GamebeastConfigs:Observe({"Lighting", "Atmosphere"}, function(newValue, oldValue)
+    print("Config is ready/changed", newValue)
 end)
 ```
 
