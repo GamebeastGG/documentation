@@ -1,0 +1,70 @@
+import DiscordCTA from 'components/DiscordCTA';
+import YoutubeEmbed from 'components/YoutubeEmbed'; 
+
+# Experiments
+
+Gamebeast provides a powerful experiments system that allows you to run tests in your experience. This system is designed to help you test new features, gather data, and make informed decisions based on player behavior.
+
+Gamebeast Experiments are fundamentally similar to A/B tests, but allow for up to 8 variations of a configuration to be tested at once.
+
+<YoutubeEmbed embedId="THB9giNUnPc"/>
+
+
+## Creating an Experiment
+
+To create an experiment, nagivate to the **Experiments** tab in the Gamebeast dashboard. Here, you can create a new experiment or manage existing ones.
+
+Start by clicking the **"New Experiment"** button. This will open a form where you can enter the details of your experiment.
+![Empty Experiment](/imgs/roblox/experiments/blankExperiment.png)
+
+Upon clicking **"Create"** on the top right, the experiment will begin immediately or at the specified start date.
+
+### Experiment Details
+
+##### Mode
+This field determines how the experiment will be run. You can choose between: **"Per-server"** and **"Per-player"**.
+- **Per-server**: Each server will run the experiment independently, with players receiving the same variation within that server.
+- **Per-player**: Each player will receive a variation independently, allowing for more granular testing across different servers.
+
+---
+##### Groups
+
+This field allows you to define the groups that will be used in the experiment. You can create up to 8 groups, each representing a different variation of the experiment. Each group should have a unique name and will be based on one of your [previously defined configs](/Roblox/Configurations).
+
+![Groups](/imgs/roblox/experiments/groups.png)
+
+
+From left to right, the groups entries show the following:
+- **Group Name**: The name of the group, which should be unique.
+- **Modification count**: The number of times this group has been modified. Clicking this will open the group configuration menu, allowing you to edit the group's settings.
+- **Distribution**: The percentage of players that will be assigned to this group. The total distribution across all groups should equal 100%.
+- **Delta**: A button to view the differences between this group and the default group, which is only present if there are is at least one change within the group.
+
+When creating a group, you can edit any of the configurations that you have defined by selecting them in the dropdown menu. There is no limit to how many configurations you can change within a group.
+
+![Group Configs](/imgs/roblox/experiments/experimentConfig.png)
+
+---
+##### Start/End Date
+
+These fields are optional, but can be used to define a time range for the experiment. If set, the experiment will only run during this time period.
+
+If the start date is not set, the experiment will start immediately upon creation. If the end date is not set, the experiment will run indefinitely until manually stopped.
+
+---
+
+## Viewing Experiment Results
+Once an experiment is created, you can view its effects using the [Query Builder](/Roblox/QueryBuilder).
+
+You can filter and breakdown your queries by the experiment to see how different variations are performing. This allows you to analyze player behavior and make data-driven decisions based on the results of your experiment.
+
+![Breakdown Experiment](/imgs/roblox/experiments/experimentBreakdown.png)
+
+## Ending an Experiment
+There are two ways to end an experiment:
+1. **Manually**: You can end the experiment at any time by right-clicking the experiment in the list, and pressing **"Terminate Experiment"** button.
+2. **Automatically**: If you set a specific end date for the experiment, it will automatically end when that date is reached.
+
+![End Experiment](/imgs/roblox/experiments/rightClick.png)
+
+**DELETING** and experiment will also end it, but this will remove all data associated with the experiment.
