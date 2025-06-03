@@ -5,7 +5,7 @@ import {ParameterList, Parameter} from '/components/Parameter.tsx';
 
 Use this section to review required setup functions and examples for the Roblox SDK.
 
-Refer to the [Getting started](/Roblox/GettingStarted) section for a for installation information.
+Refer to the [Intallation](/Roblox/Installation) section for installation information.
 
 
 ## Calling into Gamebeast from Roblox
@@ -27,6 +27,12 @@ local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
  
 Gamebeast:Setup()
 ```
+
+### IMPORTANT: Tracking Dev Product purchases
+
+If you are using Dev Products in your game, it is highly recommeded to implement the [:SendNewPurchaseGrantedMarker](/Roblox/API/Markers#sendnewpurchasegrantedmarkerreceiptinfo-position) method to track purchases accurately.
+
+
 
 ## SDK Usage Considerations
 

@@ -22,15 +22,27 @@ On the right side of visualization setup, you can configure the data source (Met
 
 The metrics field is where you select your data source for the query. You can choose from a list of available metrics, such as player joins, player leaves, and custom markers sent from your experience.
 
-On each metric, you can filter the data by its properties to pull only relevant data for your visualization.
+![Metrics](/imgs/roblox/querybuilder/metrics.png)
+
+On each metric, you can select the type of data you want to visualize, such as the count of markers, the average value of a property, or the sum of a property.
+
+![Metrics](/imgs/roblox/querybuilder/metricType.png)
 
 #### Global Filters
 
-Global filters allow you to filter all of your metrics by a shared property. For example, if your metrics were `SpellUsed` and `SpellEquipped`, you could filter both metrics simutaneously by the `SpellName` property.
+Global filters allow you to filter all of your metrics by a shared property, argument, or experiment.
+
+- **Property**: Provided automatically by Gamebeast, has general global information about the marker, such as `Country`, `Device`, `Language`, etc.
+- **Argument**: Custom arguments that you have sent with your markers, such as a `Level`, `ItemName` or any other custom data you want to track.
+- **Experiment**: If you have [experiments](/Roblox/Experiments) running in your experience, you can filter your data by the experiment name to see how different variations are performing.
 
 #### Breakdowns
 
-Finally, breakdowns allow you visualize your data by a specific property. For example, you could breakdown your data by `SpellName` to see how many times each spell was used in your experience.
+Finally, breakdowns allow you visualize your data by variations in a specific property or argument.
+
+For example, here is a breakdown of the `Country` property, which will show you how many players from each country have joined your experience.
+
+![Breakdowns Example](/imgs/roblox/querybuilder/breakdownExample.png)
 
 ### Configuring the visualization
 On the top of the visualization preview, you can filter the data by time range, and choose from a variety of visualization types, such as line charts, bar charts, and pie charts.

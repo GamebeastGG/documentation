@@ -3,7 +3,6 @@ import ReturnType from '/components/ReturnType.tsx';
 import RunContext from '/components/RunContext.tsx';
 
 # Configs
-<RunContext contexts={["server", "client"]}/>
 
 This API is used to retrieve the values of Gamebeast configs.
 
@@ -12,7 +11,13 @@ local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gam
 local GamebeastConfigs = Gamebeast:GetService("Configs")
 ```
 
-## :Get(path)
+## Shared Methods
+<RunContext contexts={["server", "client"]}/>
+
+These methods are used to retrieve and listen to the values of configs that are shared across all players & servers in the experience. When a per-player experiment is active, these methods will only return the config revelant to the run context (server or client).
+To retrieve player-specific configs on the server, use the [Server Methods](#server-methods) below.
+
+### :Get(path)
 <ReturnType type="{[string] : any} | any"/>
 This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `path` parameter. 
 The :Get method will yeild until the configs are loaded from Gamebeast.
@@ -23,7 +28,7 @@ The :Get method will yeild until the configs are loaded from Gamebeast.
     </Parameter>
 </ParameterList>
 
-### Usage 
+#### Usage 
 ```lua
 -- string
 local SunPosition = GamebeastConfigs:Get("SunPosition")
@@ -33,9 +38,9 @@ local SunPosition = GamebeastConfigs:Get({"SunPosition"})
 local Health = GamebeastConfigs:Get({"NPCs", "Spider", "Health"})
 ```
 
-## :OnChanged(path, callback)
+### :OnChanged(path, callback)
 <ReturnType type="RBXScriptSignal"/>
-This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `path` parameter. 
+This function is used to listen to the value a specific config changing. It can accept either a single string or a list of strings as the `path` parameter. 
 
 <ParameterList name="Parameters">
     <Parameter name="path" type="string | {string}">
@@ -46,7 +51,7 @@ This function is used to retrieve the value of a specific config. It can accept 
     </Parameter>
 </ParameterList>
 
-### Usage
+#### Usage
 ```lua
 -- string
 GamebeastConfigs:OnChanged("SunPosition", function(newValue, oldValue)
@@ -59,19 +64,46 @@ local ChangedConnection = GamebeastConfigs:OnChanged({"Lighting", "Atmosphere"},
 end)
 ```
 
-## :IsReady()
+### :Observe(path, callback)
+<ReturnType type="RBXScriptSignal"/>
+Similar to :OnChanged, this function fires the provided callback when the target config either changed, **or** becomes available after being initially fetched from Gamebeast. 
+
+<ParameterList name="Parameters">
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+    <Parameter name="callback" type="(newValue : any, oldValue : any) -> ()">
+        Callback function fired when the config on the provided path is ready, or is changed.
+    </Parameter>
+</ParameterList>
+
+#### Usage
+```lua
+-- string
+GamebeastConfigs:Observe("SunPosition", function(newValue, oldValue)
+    -- Old value will be nil if the config was not previously available
+    print("Config is ready/changed", newValue)
+end)
+
+-- Path (array of strings)
+local ObserveConnection = GamebeastConfigs:Observe({"Lighting", "Atmosphere"}, function(newValue, oldValue)
+    print("Config is ready/changed", newValue)
+end)
+```
+
+### :IsReady()
 <ReturnType type="boolean"/>
 
 Returns a boolean indicating whether the config are loaded and ready to be used.
 
-### Usage
+#### Usage
 ```lua
 if GamebeastConfigs:IsReady() then
     print("Configs are ready!")
 end
 ```
 
-## :OnReady(callback)
+### :OnReady(callback)
 <ReturnType type="RBXScriptSignal"/>
 This method fires a callback once the configs are loaded from Gamebeast.
 
@@ -81,9 +113,109 @@ This method fires a callback once the configs are loaded from Gamebeast.
     </Parameter>
 </ParameterList>
 
-### Usage
+#### Usage
 ```lua
 GamebeastConfigs:OnReady(function(configs)
     print("Configs are ready!", configs)
 end)
+```
+
+## Server Methods
+<RunContext contexts={["server"]}/>
+
+These methods are primarily useful for configs that are per-player when [experiments](/Roblox/Experiments) are active. They allow you to retrieve and listen to player-specific configurations.
+
+### :GetForPlayer(player, path)
+<ReturnType type="{[string] : any} | any"/>
+This function is used to retrieve the value of a specific config for a specific player. It can accept either a single string or a list of strings as the `path` parameter. 
+This method will yeild until the configs are loaded from Gamebeast.
+
+<ParameterList>
+    <Parameter name="player" type="Player">
+        The player to retrieve the config for.
+    </Parameter>
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+</ParameterList>
+
+#### Usage 
+```lua
+game:GetService("Players").PlayerAdded:Connect(function(player : Player)
+    if GamebeastConfigs:IsReady() == false then
+        print("Configs are not ready yet, :GetForPlayer will yield until they are ready.")
+    end
+
+    -- string
+    local SunPosition = GamebeastConfigs:GetForPlayer(player, "SunPosition")
+
+    -- Path (array of strings)
+    local SunPosition = GamebeastConfigs:GetForPlayer(player, {"SunPosition"})
+    local Health = GamebeastConfigs:GetForPlayer(player, {"NPCs", "Spider", "Health"})
+end)
+```
+
+### :OnChangedForPlayer(player, path, callback)
+<ReturnType type="RBXScriptSignal"/>
+This function is used to listen to the value a specific player's config is changing. It can accept either a single string or a list of strings as the `path` parameter. 
+
+<ParameterList name="Parameters">
+    <Parameter name="player" type="Player">
+        The player to retrieve the config for.
+    </Parameter>
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+    <Parameter name="callback" type="(newValue : any, oldValue : any) -> ()">
+        Callback function fired when the config on the provided path changes.
+    </Parameter>
+</ParameterList>
+
+#### Usage
+
+```lua
+game:GetService("Players").PlayerAdded:Connect(function(player : Player)
+    -- string
+    GamebeastConfigs:OnChangedForPlayer(player, "SunPosition", function(newValue, oldValue)
+        print("New config", newValue)
+    end)
+
+    -- Path (array of strings)
+    local ChangedConnection = GamebeastConfigs:OnChangedForPlayer(player, {"Lighting", "Atmosphere"}, function(newValue, oldValue)
+        print("New config", newValue)
+    end)
+end)
+```
+
+### :ObserveForPlayer(path, callback)
+<ReturnType type="RBXScriptSignal"/>
+Similar to :OnChanged, this function fires the provided callback when the player's target config either changed, **or** becomes available after being initially fetched from Gamebeast. 
+
+<ParameterList name="Parameters">
+    <Parameter name="player" type="Player">
+        The player to retrieve the config for.
+    </Parameter>
+    <Parameter name="path" type="string | {string}">
+        The configuration path to retrieve. You can provide either a single string or a list of strings.
+    </Parameter>
+    <Parameter name="callback" type="(newValue : any, oldValue : any) -> ()">
+        Callback function fired when the config on the provided path is ready, or is changed.
+    </Parameter>
+</ParameterList>
+
+#### Usage
+```lua
+game:GetService("Players").PlayerAdded:Connect(function(player : Player)
+    -- string
+    GamebeastConfigs:ObserveForPlayer("SunPosition", function(newValue, oldValue)
+        -- Old value will be nil if the config was not previously available
+        print("Config is ready/changed", newValue)
+    end)
+
+    -- Path (array of strings)
+    local ObserveConnection = GamebeastConfigs:ObserveForPlayer({"Lighting", "Atmosphere"}, function(newValue, oldValue)
+        print("Config is ready/changed", newValue)
+    end)
+end)
+
 ```

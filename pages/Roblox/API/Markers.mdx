@@ -18,7 +18,7 @@ This method sends a marker with the specified value to Gamebeast.
 
 <ParameterList>
     <Parameter name="markerType" type="string">
-        The name of the Marker.
+        The name of the marker.
     </Parameter>
     <Parameter name="value" type="number | {[string] : any}">
         The value of the marker.
@@ -30,6 +30,8 @@ This method sends a marker with the specified value to Gamebeast.
 
 ### Usage
 ```lua
+GamebeastMarkers:SendMarker("Coins", {Amount = 50, FoundIn = "Lobby"})
+-- Single value example:
 GamebeastMarkers:SendMarker("Coins", 50)
 
 -- With position
@@ -46,7 +48,7 @@ This function sends a marker associated with a specific player to Gamebeast.
         The player instance associated with the marker.
     </Parameter>
     <Parameter name="markerType" type="string">
-        The name of the Marker.
+        The name of the marker.
     </Parameter>
     <Parameter name="value" type="number | {[string] : any}">
         The value of the marker.
@@ -60,8 +62,64 @@ This function sends a marker associated with a specific player to Gamebeast.
 ```lua
 local Player = game:GetService("Players").Player1
 
+GamebeastMarkers:SendPlayerMarker(Player, "Coins", {Amount = 50, FoundIn = "Lobby"})
+-- Single value example:
 GamebeastMarkers:SendPlayerMarker(Player, "Coins", 50)
 
 -- With position
 GamebeastMarkers:SendPlayerMarker(Player, "Coins", 50, Player.Character.PrimaryPart.Position)
+```
+
+## :SendNewPurchaseGrantedMarker(receiptInfo, position)
+<ReturnType/>
+This function sends a `Purchase` marker from a dev product purchase to Gamebeast. This method should be used inside of your game's `MarketplaceService.ProcessReceipt` callback whenever a **new** purchase is granted. 
+
+<ParameterList>
+    <Parameter name="receiptInfo" type="{[string] : any}">
+        The receiptInfo dictionary from the `MarketplaceService.ProcessReceipt` callback.
+    </Parameter>
+    <Parameter name="position" type="Vector3?">
+        The optional marker world position for heatmap visualization.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua 
+local MarketplaceService = game:GetService("MarketplaceService")
+local DataStoreService = game:GetService("DataStoreService")
+
+local PurchaseHistoryStore = DataStoreService:GetDataStore("PurchaseHistory") 
+
+MarketplaceService.ProcessReceipt = function(receiptInfo)
+    local success, isPurchaseRecorded = pcall(function()
+		return PurchaseHistoryStore:UpdateAsync(receiptInfo.PurchaseId, function(alreadyPurchased)
+			if alreadyPurchased then
+				return true
+			end
+
+            -- NOTE: In your experience, you should have more checks. Make sure to look at Roblox's documentation for more information.
+
+            local success, result = pcall(function()
+                -- Grant the product to the player
+            end)
+
+			if success then
+                -- Send the purchase marker to Gamebeast only if we've never processed this purchase before.
+                GamebeastMarkers:SendNewPurchaseGrantedMarker(receiptInfo)
+                return true
+            else
+                -- Do not record the purchase if granting the product failed
+				error("Failed to process a product purchase")
+				return nil
+			end
+		end)
+	end)
+
+	if success == false or isPurchaseRecorded == nil then
+		return Enum.ProductPurchaseDecision.NotProcessedYet
+	else
+		-- IMPORTANT: Tell Roblox that the game successfully handled the purchase
+		return Enum.ProductPurchaseDecision.PurchaseGranted
+	end
+end
 ```

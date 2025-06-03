@@ -6,9 +6,15 @@ If you haven't created a project in the Gamebeast dashboard yet, please start wi
 ## Installing the SDK
 To add the SDK, you'll first need to install the Gamebeast plugin for Roblox Studio, which can be found [here](https://create.roblox.com/marketplace/asset/15951241108/Gamebeast%3Fkeyword=&pageNumber=&pagePosition=). After downloading, the plugin should appear under "Gamebeast" in the Plugins tab of Roblox Studio.
 
-![PluginBar](/imgs/roblox/functions/manageplugins.png)
+*If you are using an external IDE such as VSCode, you can also download the SDK from the [Gamebeast GitHub repository](https://github.com/GamebeastGG/RobloxSDK).*
 
-Next, Click the Add/Update SDK button to automatically add our Roblox SDK and Gamebeast module to ReplicatedStorage. You will be prompted to give the plugin permission to insert scripts into your experience, select "**Allow**".
+![PluginBar](/imgs/roblox/functions/PluginBar.png)
+
+Next, click the the "Manage" button in the Gamebeast plugin bar. This will open the Gamebeast plugin management window.
+
+![PluginManagement](/imgs/roblox/ManagementPlugin.png)
+
+Then, click the **SDK** button to install our Roblox SDK and Gamebeast module to ReplicatedStorage. You will be prompted to give the plugin permission to insert scripts into your experience, select "**Allow**".
 
 ![t](/imgs/roblox/functions/accept.png)
 
@@ -46,6 +52,7 @@ local Gamebeast = require(ReplicatedStorage:WaitForChild("Gamebeast"))
 Gamebeast:Setup()
 ```
 
+### Creating an API key
 Next, we'll need to configure the API key for your project.
 
 To do this, we'll need to go back to the project settings page on the dashboard.
