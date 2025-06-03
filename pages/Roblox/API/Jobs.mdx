@@ -1,0 +1,43 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Jobs
+<RunContext contexts={["server"]}/>
+
+This API is used to setup custom jobs that can be triggered from the Gamebeast dashboard. Jobs are useful for running custom code in your game, such as running maintenance tasks, updating player data, or performing other actions that you want to control from the Gamebeast dashboard.
+  
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+local GamebeastJobs = Gamebeast:GetService("Jobs") :: Gamebeast.JobsService
+```
+
+## :SetCallback(jobName, callback)
+<ReturnType/>
+This method sets a callback function for a specific job. The callback function will be called when the user triggers a custom job on the dashboard with the same name as the specified `jobName`. 
+
+Callbacks should only be set **once per job**, as setting multiple callbacks for the same job will overwrite the previous callback. When a callback is triggered, `config` will be equal to the configuration object that was passed when the job was triggered from the Gamebeast dashboard.
+
+If a job callback errors, it will appear on the Gamebeast dashboard as "Failed". 
+
+<ParameterList>
+    <Parameter name="jobName" type="string">
+        The name of the custom job.
+    </Parameter>
+    <Parameter name="callback" type="(config : {[string] : any}) -> any">
+        The function to run when the job is executed.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+GamebeastJobs:SetCallback("My Custom Job", function(config : {[string] : any})
+    print("My custom job was triggered!")
+
+    if config.SomeProperty == true then
+        return "Job completed with SomeProperty set to true!"
+    else
+        error("An error occurred!")
+    end
+end)
+```
