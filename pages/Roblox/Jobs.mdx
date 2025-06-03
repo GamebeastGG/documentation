@@ -39,8 +39,21 @@ Custom jobs have options that change how the job behaves when executed.
 <img src="/imgs/roblox/jobs/custom-job-create.png" alt="Custom Job" width="60%"/>
 
 - **Host only mode**: When enabled, the job will only be executed on a single server known as the host instead of all servers.
-- **Run asynchronously**: When enabled, the job that is next in the queue will not wait for this job to finish executing.
+- **~~Run asynchronously~~**: Deprecated property, all jobs will run asynchronously by default meaning the job that is next in the queue will not wait for this job to finish executing.
 
 ### Running custom jobs
 
-To run a custom job, click the "Run" button next to the
+To run a custom job, click the "Run" button on the top right of the "Jobs" list.
+
+This will open a modal where you can select the job you want to run, and provide any configuration options that the job requires.
+
+![Run job](/imgs/roblox/jobs/run-job.png)
+
+#### Options for running a job
+
+- **Job Type**: The name of your custom job you want to run.
+- **Configuration**: A [configuration](/Roblox/Configurations) that will be sent along with the job. This is optional and can be left empty if the job does not require any configuration.
+- **Start date**: The date and time when the job should start. This is optional and can be left empty if the job should start immediately.
+- **End date**: Currently not supported. 
+
+Upon clicking the "Confirm" button, the job will be added to the queue and processed in the order it was received. You can view the status of the job in the "Jobs" tab.
