@@ -13,23 +13,39 @@ These configurations are managed in the Gamebeast dashboard via "configuration p
 simply navigate to the "Configurations" tab of the nav bar on the dashboard and press "Add Configuration". This will create a
 blank configuration profile.
 
-![RemoteConfigsPage](/imgs/roblox/RemoteConfigs.png)
+![RemoteConfigsPage](/imgs/roblox/remoteconfigs/blank-config.png)
 
-Each element you define in your profile can be one of 4 types: a primitive, an array, an object, or a link.
+### Key menu
+Each element you define in your profile can be configured through the `⠿` button that appears when you hover over the key.
 
-**Primitive**: The Primitive type allows for any raw value such as a number, a string, or boolean. Type is inferred based on your input.
+![Menu](/imgs/roblox/remoteconfigs/six-menu.png)
+
+#### Duplicate
+
+The Duplicate option allows you to duplicate the current key and its value including all descendants if applicable. This is useful for quickly creating similar keys without having to re-enter the value.
+
+#### Make private
+
+The "Make private" options allows you to make the current key and its descendants private to a server-only run context, meaning configurations replicated to clients will not include this key and its descendants. This is useful for sensitive data that should not be exposed to clients.
+
+You can tell a key is private at a glance by the yellow outline around the key and its descendants. 
+
+![Private](/imgs/roblox/remoteconfigs/private-example.png)
+
+#### Change type
+The "Change type" option allows you to change the type of the current key. The available types are:
+
+- **Primitive**: The Primitive type allows for any raw value such as a number, a string, or boolean. Type is inferred based on your input.
 Ensure you both enter the value correctly and that you're receiving them correctly where you're developing.
 
-**Array**: The Array type allows for an array of primitive values.
+- **Array**: The Array type allows for an array of primitive values.
 
-**Object**: An object behaves like a dictionary, allowing you to place more values within that key, which can include other dictionaries.
+- **Object**: An object behaves like a dictionary, allowing you to place more values within that key, which can include other dictionaries.
 After creating an object, you can add elements by hovering over any of the immediate values and pressing the "+" button that appears.
 
-**Link**: A link is a symbolic link which, instead of being a raw value, points to a different configuration profile. This makes it
+- **Link**: A link is a symbolic link which, instead of being a raw value, points to a different configuration profile. This makes it
 easy to organize different profiles and conceptualize them as "modules" within a main organizational configuration profile, among
 other use cases. 
-
-To select a type, hover over the key, select `⠿` and click the type you would like to use.
 
 ### Importing Roblox modules or existing configurations
 
@@ -57,25 +73,51 @@ print(encoded)
 this code.** Consider modifying the code to convert your data to a serializable representation that you can then use in a profile.
 
 ## Target environments (modes)
-For our Roblox solution, the top "Studio Mode" selector determines whether your changes are made to your live game servers or
-Roblox Studio. When enabled, changing configurations, user management actions, and recorded marker and analytics data only affects
+For our Roblox solution, the top right "Studio Mode" selector determines whether your changes are made to your live game servers or
+Roblox Studio. 
+
+Lets take a look at what happens before and after you toggle this selector:
+
+**Before toggling "Studio Mode"**:
+![Before Studio Mode](/imgs/roblox/remoteconfigs/prod-mode.png)
+
+**After toggling "Studio Mode"**:
+![Studio Mode](/imgs/roblox/remoteconfigs/studio-mode.png)
+
+
+### What happened to my configurations?
+Notice how the top of the page now shows "Studio Mode", but what happened to the configurations that we had before?
+
+They are still there, but only in the "Production" environment. You can switch between environments by clicking the
+"Studio Mode" toggle in the top right corner. This allows you to view and edit configurations in both environments.
+
+When studio mode is enabled, changing configurations, recorded marker and analytics data only affects
 and is only for when running your game in Roblox Studio. This makes testing your game and changes to configurations easy without
 deploying to your live servers. Conversely, any actions taken with "Studio Mode" disabled will publish to and affect your live
 servers.
 
-### Copying configurations between environments
-To copy a configuration from one environment to another (Studio Mode -> Production), Right-click the configuration name on the list to the left, or click the three dots next to the configuration name. This will open a dropdown menu where you can select "Push to Production" or conversely, "Push to Studio".
+#### Moving between environments
 
-## Publishing configurations
-Once you've created a configuration profile, you can then select the "Current configuration" for your project. This is the profile
-that will be used across all your game servers. Note that confirming the selection will publish that configuration to the current
-environment.
-Following the initial selection and publication of your configurations, you can edit the profile directly and click the green
-save icon to publish to the current environment.
-You can the status of your publish action under the "Jobs" tab. For more on the Jobs page, see [here](/Roblox/Jobs).
+To move between environments, simply toggle the "Studio Mode" switch in the top right corner of any page
 
-## Using configurations
+If you need to move a configuration from one environment to another, you can do so by right-clicking the configuration name on the list to the left, or clicking the three dots next to the configuration name. This will open a dropdown menu where you can select "Copy to studio" or conversely, "Copy to production".
 
-Using configuration is simple. Use the [`Get`](/Roblox/API/Configs#getpath) method to reference a
-configuration and the [`OnChanged`](/Roblox/API/Configs#onchangedpath-callback) method to listen for and handle
-updates.
+![Copy to](/imgs/roblox/remoteconfigs/copy-to.png)
+
+## Using configurations in your project
+Once you've created a configuration profile, to use a configuration through the SDK, you must set it as the active configuration
+
+There are two ways to set the active configuration:
+- Right click the the configuaration name on the list, and select "Set as active configuration" as seen above.
+- Navigate to the **"Project Settings"** tab in the Gamebeast dashboard, and select the configuration you want to use as the active configuration from the dropdown menu under "Active Configuration" seen below.
+
+![Project Settings](/imgs/roblox/remoteconfigs/project-settings.png)
+
+Remember that the active configuration needs to be set for each environment separately.
+You can view the status of your publish action under the "Jobs" tab. For more on the Jobs page, see [here](/Roblox/Jobs).
+
+### Accessing configurations in code
+
+Once you have set the active configuration, you can access it in your code using the Gamebeast SDK. The SDK provides methods to retrieve and listen to configuration values.
+
+Please refer to the [API documentation](/Roblox/API/Configs) for more information on how to use the SDK to access configurations.

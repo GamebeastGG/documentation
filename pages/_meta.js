@@ -6,7 +6,7 @@ module.exports = {
   "gamebeast": {
     "title": "Dashboard",
     "type": "page",
-    "href": "https://gamebeast.gg",
+    "href": "https://dashboard.gamebeast.gg",
     "newWindow": true
   },
   "contact": {

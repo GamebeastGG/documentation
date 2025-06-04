@@ -7,7 +7,7 @@ Gamebeast provides a powerful experiments system that allows you to run tests in
 
 Gamebeast Experiments are fundamentally similar to A/B tests, but allow for up to 8 variations of a configuration to be tested at once.
 
-<YoutubeEmbed embedId="THB9giNUnPc"/>
+<YoutubeEmbed embedId="E3fuTQz2Gvk"/>
 
 
 ## Creating an Experiment
@@ -52,6 +52,11 @@ These fields are optional, but can be used to define a time range for the experi
 If the start date is not set, the experiment will start immediately upon creation. If the end date is not set, the experiment will run indefinitely until manually stopped.
 
 ---
+
+### Running multiple experiments
+You can run multiple experiments at the same time as long as they're of the same experiment "Mode" (per-server or per-player).
+
+Servers and players will only be assigned to at most one experiment at a time, meaning that if a player is already in an experiment, they will not be assigned to another one until the first one ends.
 
 ## Viewing Experiment Results
 Once an experiment is created, you can view its effects using the [Query Builder](/Roblox/QueryBuilder).

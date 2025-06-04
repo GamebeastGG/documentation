@@ -1,0 +1,22 @@
+# Funnels
+Funnels are a great way to visualize the flow of players through your game, allowing you to see where players are dropping off and which paths they are taking.
+
+Funnels can be created using any markers sent from your experience, meaning you can build funnels retroactively without needing additional events.
+![Funnel Example](/imgs/roblox/funnels/funnel-example.png)
+
+## Creating a funnel in the Gamebeast dashboard
+Similarly to [how you can make other visualizations in the Query Builder](/Roblox/QueryBuilder), funnels are created through the Gamebeast dashboard.
+To create a funnel, navigate to the `Boards` page in the Gamebeast dashboard. Here, you can create a new board or add to an existing board.
+
+When creating or editing a query, select the **"Funnel"** tab on the top right. This will allow you to visualize your data as a funnel.
+
+Funnels are built using a series of steps, where each step represents a marker that players must pass through to continue down the funnel. You can add as many steps as you like, and each step can be configured with its own [local filters](/Roblox/QueryBuilder).
+![Funnel Tab](/imgs/roblox/funnels/funnel-query.png)
+
+### Advanced conversion options
+Funnels can be configured with advanced conversion options to better understand player behavior. These options include:
+- **Conversion Window**: The time period in which players must complete the funnel steps. If a player does not complete the funnel within this time period, they will be considered as having dropped off.
+- **Allow steps between**: This option allows you to specify whether players can complete steps in the funnel out of order. If enabled, players can complete steps in any order, but if disabled, they must complete the steps in the order they are defined.
+- **Holding property constant**: This option allows you to specify a property that must remain constant across all steps in the funnel. If a player changes this property between steps, they will be considered as having dropped off.
+
+![Funnel Conversion](/imgs/roblox/funnels/funnel-conversion.png)

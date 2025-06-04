@@ -5,6 +5,7 @@ module.exports = {
   "Engagement": "Engagement Markers",
   "QueryBuilder" : "Boards & Query Builder",
   "Heatmaps": "Heatmaps",
+  "Funnels" : "Funnels",
   "UserCohorts" : "User Cohorts",
   "UserManagement": "User Management",
   "Jobs": "Dashboard Jobs",
