@@ -161,7 +161,7 @@ This function is used to listen to the value a specific player's config is chang
 
 <ParameterList name="Parameters">
     <Parameter name="player" type="Player">
-        The player to retrieve the config for.
+        The player whose config we're listening to.
     </Parameter>
     <Parameter name="path" type="string | {string}">
         The configuration path to retrieve. You can provide either a single string or a list of strings.
@@ -187,13 +187,13 @@ game:GetService("Players").PlayerAdded:Connect(function(player : Player)
 end)
 ```
 
-### :ObserveForPlayer(path, callback)
+### :ObserveForPlayer(player, path, callback)
 <ReturnType type="RBXScriptSignal"/>
 Similar to :OnChanged, this function fires the provided callback when the player's target config either changed, **or** becomes available after being initially fetched from Gamebeast. 
 
 <ParameterList name="Parameters">
     <Parameter name="player" type="Player">
-        The player to retrieve the config for.
+        The player whose config we're observing.
     </Parameter>
     <Parameter name="path" type="string | {string}">
         The configuration path to retrieve. You can provide either a single string or a list of strings.

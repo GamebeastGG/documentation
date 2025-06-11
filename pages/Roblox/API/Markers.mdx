@@ -30,13 +30,12 @@ This method sends a marker with the specified value to Gamebeast.
 
 ### Usage
 ```lua
-GamebeastMarkers:SendMarker("Coins", {Amount = 50, FoundIn = "Lobby"})
--- Single value example:
-GamebeastMarkers:SendMarker("Coins", 50)
+GamebeastMarkers:SendMarker("RoundEnded", {Score = 600, Map = "Office", Duration = 120})
 
--- With position
-local Character = game:GetService("Players").LocalPlayer.Character
-GamebeastMarkers:SendMarker("Coins", 50, Character.PrimaryPart.Position)
+-- Single value example:
+GamebeastMarkers:SendMarker("RoundEnded", 600)
+-- Equivalent to:
+GamebeastMarkers:SendMarker("RoundEnded", {value = 600})
 ```
 
 ## :SendPlayerMarker(player, markerType, value, position)
