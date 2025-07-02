@@ -20,7 +20,7 @@ To retrieve player-specific configs on the server, use the [Server Methods](#ser
 ### :Get(path)
 <ReturnType type="{[string] : any} | any"/>
 This function is used to retrieve the value of a specific config. It can accept either a single string or a list of strings as the `path` parameter. 
-The :Get method will yeild until the configs are loaded from Gamebeast.
+The :Get method will yield until the configs are loaded from Gamebeast.
 
 <ParameterList>
     <Parameter name="path" type="string | {string}">
@@ -128,7 +128,7 @@ These methods are primarily useful for configs that are per-player when [experim
 ### :GetForPlayer(player, path)
 <ReturnType type="{[string] : any} | any"/>
 This function is used to retrieve the value of a specific config for a specific player. It can accept either a single string or a list of strings as the `path` parameter. 
-This method will yeild until the configs are loaded from Gamebeast.
+This method will yield until the configs are loaded from Gamebeast.
 
 <ParameterList>
     <Parameter name="player" type="Player">
