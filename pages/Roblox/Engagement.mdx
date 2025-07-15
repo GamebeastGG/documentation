@@ -93,6 +93,9 @@ Triggered when a player makes a purchase in your experience, such as buying a de
     <Parameter name="type" type="string">
         The type of purchase made by the player. This can be set to `gamepass`, `asset`, `devproduct` or `subscription`.
     </Parameter>
+    <Parameter name="fromReceipt" type="boolean">
+        Whether or not this purchase marker was made from the receipt of a purchase via `MarkersService:SendNewPurchaseGrantedMarker()`
+    </Parameter>
     <Parameter name="id" type="number">
         The Roblox provided identifier for the purchased item.
     </Parameter>

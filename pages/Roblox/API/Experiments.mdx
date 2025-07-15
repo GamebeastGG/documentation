@@ -1,0 +1,44 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Experiments
+<RunContext contexts={["server"]}/>
+
+This API is used to retrieve relevant experiment group information for players in your experience.
+
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+local GamebeastExperiments = Gamebeast:GetService("Experiments") :: Gamebeast.ExperimentsService
+```
+
+## Types
+### ExperimentGroupMetadata
+```lua
+type ExperimentGroupMetadata = {
+    experimentName: string, -- The name of the experiment this group belongs to.
+    groupName: string, -- The name of the group this player is in.
+}
+```
+
+## :GetGroupForPlayer(player)
+<ReturnType type="ExperimentGroupMetadata?"/>
+This method retrieves the experiment group metadata for a specific player.
+If the player is not in any experiment group, this method will return `nil`.
+
+<ParameterList>
+    <Parameter name="player" type="Player">
+        The player to get the group for.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+local groupMetaData = GamebeastExperiments:GetGroupForPlayer(player)
+
+if groupMetaData then
+    print("Player is in group", groupMetaData.groupName, "of experiment", groupMetaData.experimentName)
+else
+    print("Player is not in any experiment group.")
+end
+```
