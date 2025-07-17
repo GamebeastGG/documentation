@@ -1,0 +1,82 @@
+# Retention
+
+Retention is an important aspect of game analytics, as it helps you understand how well aspects of your experience retain players over time. With Gamebeast, retention queries allow you to track player engagement and retention metrics using markers sent from your experience.
+
+For example, by using the login marker, you can see what percent of users login again after the first day. These queries are made with the markers you're already sending, so you can build retention queries retroactively without needing to add additional events.
+
+![Retention Example](/imgs/roblox/retention/retention_graph.png)
+
+## Creating a retention query in the Gamebeast dashboard
+Similarly to [how you can make other visualizations in the Query Builder](/Roblox/QueryBuilder), retention queries are created through the Gamebeast dashboard.
+To create a retention query, navigate to the `Boards` page in the Gamebeast dashboard. Here, you can create a new board or add to an existing board.
+
+
+ 
+When creating or editing a query, select the **"Retention"** tab on the top right. This will allow you to visualize your data as a retention query.
+
+### Steps
+Retention queries are built using two steps, A and B.
+
+- **Step A**: Represents the initial event that players must complete to be included in the query.
+- **Step B**: Represents the event that you want to track retention for.
+
+Steps can be configured with [local filters](/Roblox/QueryBuilder) to filter the data by specific properties, arguments, or experiments.
+
+For example, if A is the `Login` marker, and B is the `Purchase` marker, you can see what percent of players who logged in made a purchase within a certain time period.
+
+![Retention Tab](/imgs/roblox/retention/steps.png)
+
+### Retention Criteria
+
+Retention queries can be configured with conditional criteria for the retention group. (Such as D1, D7, D30)
+
+- **Retention type**: The type of retention query
+    - **On**: Players who completed step B **on** the retention day.
+    - **On or before**: Players who completed step B on the retention day or any day before.
+    - **On or after**: Players who completed step B on the retention day or any day after.
+
+- **Time interval**: The size of each time period in which players must complete step B after completing step A. This can be set to `Day`, `Week`, or `Month`.
+- **Metric type**: The type of metric to visualize the retention query. This can be set to `Unique Players (Count)` or `Retention Rate (Percentage)`.
+- **Retention Group**: The specific day/week/month after the initial event to track retention for (e.g., D1, D7, W2).
+
+### Global Filters and Breakdowns
+Similarly to the other query types, retention queries also support [Global filters](/Roblox/QueryBuilder#global-filters) and [breakdowns](/Roblox/QueryBuilder#breakdowns) to filter your data by specific properties, arguments, or experiments.
+
+**For retention queries breakdowns are currently only supported if step A and B are the same marker type, such as `Login`.**
+
+
+## Chart Types
+At the top of the retention query preview, you can filter the data by time range, and choose from a few different visualization types which change how the data should be interpreted.
+
+
+### Line
+
+Line charts show you the retention on each day over the selected time range. 
+
+For example, lets say step A and step B are both set to the "Login" marker, and our "Retention Group" is set to D1.
+If 10 users login on **July 1st**, and 2 of those users login again on **July 2nd**, we would see a 20% retention rate for **July 2nd**.
+
+Note that when a user is retained, they count towards the retention rate for the day they they were retained on instead of the day they triggered step A. This is why you will see retention data for the current day, instead of having to wait till the end of the measured retention period to see the data.
+
+
+### Retention Curve
+
+Retention curves are a more advanced visualization that shows you the retention rate over time for each retention group.
+
+For example, if step A is set to "Login" and step B is set to "Purchase", you'll notice the "Retention group" option disappears.
+
+This is because retention curves aren't based on time, and instead show you data for each retention group in a single chart.
+For example, if you have User_A who logged in on **July 1st** and made a purchase on **July 2nd**, and User_B who logged in on **August 5th** and made a purchase on **August 6th**, both of these users would count towards the retention rate for "D1", as they are both D1 retained users, even though they didn't occur on the same days.
+
+The time period for retention curves is based on the time range you select at the top of the query preview. If you select "7D", the range we check for D1-D7 in the curve will be up to 7 days in the past.
+
+#### Retention type behavior for Retention Curves
+
+When using the "On or before" retention criteria, the retention curve will always show an upwards trend. This is because each retention group includes the users in the groups before it, as we're asking *"What users were retained on or before this day?"*, and with that logic, D2 will include all users from D1 because D1 is before D2.*
+
+Conversely, when using the "On or after" retention criteria, the retention curve will always show a downwards trend as each group includes all of the days after it.
+
+
+### Metric
+
+The metric chart type is a weighted average of the retention rate for the selected retention group.
