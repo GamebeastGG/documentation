@@ -1,5 +1,57 @@
 import DiscordCTA from 'components/DiscordCTA';
 
 # User Cohorts
-Coming soon!
-<DiscordCTA/>
+
+User cohorts allow you to group and filter users based on shared characteristics from your markers, making it easy to analyze and understand user behavior for specific subsets of users.
+
+## Cohort Usage
+
+Cohorts can be used directly in your queries through the [Query Builder](/Roblox/QueryBuilder) as a **Breakdown, Local filter, and/or Global filter**.
+
+![Edit](/imgs/roblox/cohorts/usage.png)
+
+### Cohorts as a filter
+
+When using cohorts as a global or local filter, you can choose to include ("is in") or exclude ("is not in") users who are part of the selected cohort.
+
+### Cohorts as a breakdown
+
+When using cohorts as a breakdown, your query will split data into two groups: users who are part of the selected cohort, and users who are not part of the selected cohort.
+
+## Creating a Cohort
+
+Cohorts are created directly through the Filter/Breakdown value selection window. To create a new cohort, navigate to a query in the Boards page, and open the value selection window for a filter or breakdown.
+
+![Cohort Example](/imgs/roblox/cohorts/example.png)
+
+### Cohort groups
+
+Cohorts by default have one group, but can be configured to have multiple groups. Each group can have its own set of criteria that users must meet to be included in the cohort. 
+
+Groups are combined using logical operators (AND/OR) to create more complex inclusion criteria, and can be re-ordered by dragging the ⠿ icon on the left.
+
+#### Cohort group Conditions
+
+Each group has a set of one or more conditions that users must meet to be included in the cohort. These conditions can be based on any user properties available in your markers.
+Each condition is chained together with a logical operator (AND/OR) to combine multiple conditions within a group.
+
+For example, lets take the condition: 
+
+> "`did` `Login` `Total Events` `Greater than or equal to` `1` `Last` `7 days`"
+
+This breaks down to "Give me all users who triggered the Login marker at least once in the last 7 days."
+
+
+##### Fields
+1. **Inclusion**: "Did" or "Did not" - Whether an included user did or did not complete the action specified in the condition.
+2. **Marker**: The marker that the condition is based on.
+3. **Property**: The specific property of the marker that the condition is evaluating (e.g., "Total Events", "Average of X"). 
+4. **Value Range**: The range operator that specifies the threshold which a the marker **Property** value must satisfy (e.g., "Greater than", "Equal to", "Less than or equal to").
+5. **Time Range**: The time period over which the condition is evaluated (e.g., "Last 7 days", "Last 30 days").
+
+
+### Editing a Cohort
+
+To edit a cohort, hover over the cohort name in the filter value window, and click the gear icon that appears.
+
+![Edit](/imgs/roblox/cohorts/edit.png)
