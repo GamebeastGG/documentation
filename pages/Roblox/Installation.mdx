@@ -1,12 +1,19 @@
+import { Tabs } from 'nextra/components'
+ 
+
+
 # Installation
 Getting started with Gamebeast in Roblox is easy. This guide will walk you through the process of installing the Gamebeast SDK and configuring your API key.
 
 If you haven't created a project in the Gamebeast dashboard yet, please start with the [Getting Started](/GettingStarted) guide.
 
 ## Installing the SDK
-To add the SDK, you'll first need to install the Gamebeast plugin for Roblox Studio, which can be found [here](https://create.roblox.com/marketplace/asset/15951241108/Gamebeast%3Fkeyword=&pageNumber=&pagePosition=). After downloading, the plugin should appear under "Gamebeast" in the Plugins tab of Roblox Studio.
 
-*If you are using an external IDE such as VSCode, you can also download the SDK from the [Gamebeast GitHub repository](https://github.com/GamebeastGG/RobloxSDK).*
+<Tabs items={['Roblox Studio', 'External Editors (VSCode, etc...)']}>
+
+
+<Tabs.Tab>
+To add the SDK, you'll first need to install the Gamebeast plugin for Roblox Studio, which can be found [here](https://create.roblox.com/marketplace/asset/15951241108/Gamebeast%3Fkeyword=&pageNumber=&pagePosition=). After downloading, the plugin should appear under "Gamebeast" in the Plugins tab of Roblox Studio.
 
 ![PluginBar](/imgs/roblox/functions/PluginBar.png)
 
@@ -23,6 +30,15 @@ To make sure your Gamebeast plugin always functions properly, navigate to the Pl
 ![x](/imgs/roblox/functions/PluginManagement.png)
 
 When you open an experience in Roblox Studio that contains the Gamebeast SDK, the plugin will automatically output a warning if your SDK is out of date. Simply click the plugin to update your SDK. 
+</Tabs.Tab>
+<Tabs.Tab>
+
+Gamebeast is available as a module on Roblox package managers:
+- Wally: https://wally.run/package/gamebeast-gg/gamebeast
+
+Alternatively, you can manually download the SDK from the [Gamebeast GitHub repository](https://github.com/GamebeastGG/RobloxSDK).
+</Tabs.Tab>
+</Tabs>
 
 Finally, in Roblox Studio, go to the Home tab and press the "Game Settings" buttons. Under the "Security" tab, enable the "Allow HTTP Requests" and "Enabled Studio Access to API Services" options. This allows the Gamebeast SDK to communicate with the dashboard and use Roblox services for different features. 
 
