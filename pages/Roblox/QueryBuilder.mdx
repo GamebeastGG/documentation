@@ -1,5 +1,7 @@
 import YoutubeEmbed from 'components/YoutubeEmbed';
 
+import { Tabs } from 'nextra/components'
+
 # Query Builder & Boards
 
 The query builder is a great way to view and analyze the markers sent to Gamebeast from your experience. With the query builder, you can filter and group your markers to create custom visualizations that help you understand how players are interacting with your experience.
@@ -24,9 +26,40 @@ The metrics field is where you select your data source for the query. You can ch
 
 ![Metrics](/imgs/roblox/querybuilder/metrics.png)
 
-On each metric, you can select the type of data you want to visualize, such as the count of markers, the average value of a property, or the sum of a property.
 
-![Metrics](/imgs/roblox/querybuilder/metricType.png)
+##### Metric Types
+
+Metrics have different types that determine how the data is aggregated and displayed in the visualization.
+
+<Tabs items={["Events", "Stats", "Formulas"]}>
+    <Tabs.Tab>
+        These are the default and custom event markers you send from your experience, such as `Login` and `Logout`.
+
+        Event type metrics allow you to aggregrate data in more advanced ways, such as Frequency per User, or even more complex calculations such as Monthly Active Users.
+
+        ![Metrics](/imgs/roblox/querybuilder/metricType.png)
+
+    </Tabs.Tab>
+    <Tabs.Tab>
+        These are generated datapoints from Gamebeast that are derived from other experience data such as CCU, and server information.
+
+        Stat type metrics are generalized and arent tied back to specific players, so they cant be used for user-based calculations like Frequency per User, but can be used for simpler aggregations like Sum, Average, Min, and Max.
+    </Tabs.Tab>
+    <Tabs.Tab>
+        Formulas allow you to create custom calculations derived from existing metrics.
+
+        For example, if you wanted to calculate the stickiness for your experience using DAU (Metric A) and MAU (Metric B), you could create a the following formula:
+
+        ```
+        (A / B) * 100
+        ```
+
+        The resulting metric appears as a new line in your visualization. You can then isolate this metric by togglng the visibility of other metrics.
+
+        ![Local filter](/imgs/roblox/querybuilder/formulas.png)
+    </Tabs.Tab>
+
+</Tabs>
 
 ##### Local Filters
 Local filters allow you to filter a specific metric in the query by its properties, arguments or experiments.
