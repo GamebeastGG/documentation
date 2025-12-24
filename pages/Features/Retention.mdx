@@ -7,7 +7,7 @@ For example, by using the login marker, you can see what percent of users login 
 ![Retention Example](/imgs/roblox/retention/retention_graph.png)
 
 ## Creating a retention query in the Gamebeast dashboard
-Similarly to [how you can make other visualizations in the Query Builder](/Roblox/QueryBuilder), retention queries are created through the Gamebeast dashboard.
+Similarly to [how you can make other visualizations in the Query Builder](/Features/QueryBuilder), retention queries are created through the Gamebeast dashboard.
 To create a retention query, navigate to the `Boards` page in the Gamebeast dashboard. Here, you can create a new board or add to an existing board.
 
 
@@ -20,7 +20,7 @@ Retention queries are built using two steps, A and B.
 - **Step A**: Represents the initial event that players must complete to be included in the query.
 - **Step B**: Represents the event that you want to track retention for.
 
-Steps can be configured with [local filters](/Roblox/QueryBuilder) to filter the data by specific properties, arguments, or experiments.
+Steps can be configured with [local filters](/Features/QueryBuilder) to filter the data by specific properties, arguments, or experiments.
 
 For example, if A is the `Login` marker, and B is the `Purchase` marker, you can see what percent of players who logged in made a purchase within a certain time period.
 
@@ -40,7 +40,7 @@ Retention queries can be configured with conditional criteria for the retention 
 - **Retention Group**: The specific day/week/month after the initial event to track retention for (e.g., D1, D7, W2).
 
 ### Global Filters and Breakdowns
-Similarly to the other query types, retention queries also support [Global filters](/Roblox/QueryBuilder#global-filters) and [breakdowns](/Roblox/QueryBuilder#breakdowns) to filter your data by specific properties, arguments, or experiments.
+Similarly to the other query types, retention queries also support [Global filters](/Features/QueryBuilder#global-filters) and [breakdowns](/Features/QueryBuilder#breakdowns) to filter your data by specific properties, arguments, or experiments.
 
 **For retention queries breakdowns are currently only supported if step A and B are the same marker type, such as `Login`.**
 

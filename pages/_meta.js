@@ -1,8 +1,8 @@
 module.exports = {
   "index": "Introduction",
   "GettingStarted": "Getting Started",
-  "Roblox" : "Roblox",
-  "UEFN": "UEFN",
+  "Features": "Features",
+  "Roblox" : "Roblox SDK",
   "gamebeast": {
     "title": "Dashboard",
     "type": "page",

@@ -4,19 +4,19 @@ import {ParameterList, Parameter} from '/components/Parameter.tsx';
 
 Markers are used to track player interactions and events in your experience. This data can be used to create heatmaps and other visualizations to help you understand how players are interacting with your experience.
 
-To send markers to Gamebeast, you must first fetch the [`Markers`](/Roblox/API/Markers) service from the Gamebeast SDK. You can then use the provided `:SendMarker` methods to send markers to Gamebeast with your custom data.
+To send markers to Gamebeast, you must first fetch the [`Markers`](/Features/API/Markers) service from the Gamebeast SDK. You can then use the provided `:SendMarker` methods to send markers to Gamebeast with your custom data.
 
 By default, Gamebeast also sends a number of built-in markers to track generic player interactions, such as player joins, leaves, and chats.
 
 ## Types of markers
 
-There are two types of markers you can send to Gamebeast, Player and Global markers. All of these marker types can be visualized through the [query builder](/Roblox/QueryBuilder).
+There are two types of markers you can send to Gamebeast, Player and Global markers. All of these marker types can be visualized through the [query builder](/Features/QueryBuilder).
 
 ### Player markers
 
 Player markers are used to track player-specific interactions and events. These markers are tied to a specific player and can be used to track things like player fails, eliminations, and other player-specific events.
 
-You can view markers sent with a specific player by navigating to the player's profile in the Gamebeast [user management](/Roblox/UserManagement) dashboard.
+You can view markers sent with a specific player by navigating to the player's profile in the Gamebeast [user management](/Features/UserManagement) dashboard.
 
 ### Global markers
 
