@@ -1,0 +1,44 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Cohorts
+<RunContext contexts={["server"]}/>
+
+This API is used to check the cohort membership status of players in your experience.
+
+```lua
+local Gamebeast = require(game:GetService("ReplicatedStorage"):WaitForChild("Gamebeast"))
+local GamebeastCohorts = Gamebeast:GetService("Cohorts") :: Gamebeast.CohortsService
+```
+
+## :GetCohortMembershipStatusAsync(cohortName, userIds)
+<ReturnType type="{ [ number ] : boolean }"/>
+
+This method retrieves the cohort membership status for a list of user IDs. It returns a dictionary where the keys are user IDs and the values are booleans indicating whether each user is a member of the specified cohort.
+
+This method is asynchronous and should be wrapped in a pcall to handle any potential errors.
+
+<ParameterList>
+    <Parameter name="cohortName" type="string">
+        The name of the cohort.
+    </Parameter>
+    <Parameter name="userIds" type="{ number }">
+        A list of user IDs to check for cohort membership.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+local success, data = pcall(function()
+    return GamebeastCohorts:GetCohortMembershipStatusAsync("My Cohort", {69935436, 51501379})
+end)
+
+if success then
+    for userId, isMember in pairs(data) do
+        print("User ID:", userId, "Is Member:", isMember)
+    end
+else
+    warn("Failed to get cohort membership status:", data)
+end
+```
