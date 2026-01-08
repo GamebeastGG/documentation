@@ -3,6 +3,7 @@ module.exports = {
   "GettingStarted": "Getting Started",
   "Features": "Features",
   "Roblox" : "Roblox SDK",
+  "Changelogs": "Changelogs",
   "gamebeast": {
     "title": "Dashboard",
     "type": "page",
