@@ -48,20 +48,20 @@ const config: DocsThemeConfig = {
 </clipPath>
 </defs>
 </svg>
-    <span style={{ marginLeft: '.7em', fontWeight: 600 }}>Gamebeast SDK</span>
+    <span style={{ marginLeft: '.7em', fontWeight: 600 }}>Gamebeast Docs</span>
   </>
   ),
   head: function UseHead() {
     const { title } = useConfig()
     return (
     <>
-      <title>{title ? title + ' | Gamebeast SDK': 'Optimize Your Game'} </title>
+      <title>{title ? title + ' | Documentation': 'Optimize Your Game'} </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="Gamebeast Docs" />
-      <meta property="og:description" content="Optimize your game with the Gamebeast SDK" />
+      <meta property="og:description" content="Optimize your game with Gamebeast" />
       <meta
           name="og:title"
-          content={title ? title + ' | Gamebeast SDK' : ' Optimize Your Game'}
+          content={title ? title + ' | Documentation' : ' Optimize Your Game'}
         />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
