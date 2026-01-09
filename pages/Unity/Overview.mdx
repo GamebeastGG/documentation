@@ -1,0 +1,53 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+
+# Unity SDK
+
+Use this section to review required setup functions and examples for the Roblox SDK.
+
+Refer to the [Intallation](/Roblox/Installation) section for installation information.
+
+
+## Calling into Gamebeast from Roblox
+
+```cs filename="gamebeast_setup.cs" copy numbered
+using UnityEngine;
+using Gamebeast.Runtime;
+
+public class GamebeastStarter : MonoBehaviour
+{
+    void Start()
+    {
+        GamebeastSdk.Init("abcd-efgh-1234-5678");
+    }
+}
+```
+
+## SDK Methods
+
+### Init(apiKey)
+<ReturnType/>
+
+This function must be called once to initialize the Gamebeast SDK.
+Attempting to call any other SDK method before calling `Init` will result in an error.
+
+<ParameterList name="Parameters">
+    <Parameter name="apiKey" type="string">
+        The API key for the SDK.
+    </Parameter>
+</ParameterList>
+
+#### Usage
+```cs
+GamebeastSdk.Init("abcd-efgh-1234-5678");
+```
+
+## Accessing Services
+
+After initializing the SDK, you can access various services provided by the Gamebeast SDK. Each service is accessible via a static property on the `GamebeastSdk` class.
+
+### Example: Accessing the Markers Service
+```cs
+var markersService = GamebeastSdk.Markers;
+markersService.SendMarker("example_marker", new { value = 42 });
+```

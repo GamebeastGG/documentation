@@ -1,0 +1,47 @@
+
+# Installation
+Getting started with Gamebeast in Unity is easy. This guide will walk you through the process of installing the Gamebeast SDK and configuring your API key.
+
+If you haven't created a project in the Gamebeast dashboard yet, please start with the [Getting Started](/GettingStarted) guide.
+
+## Installing the SDK
+
+The Unity SDK is currently available directly from our [GitHub](https://github.com/GamebeastGG/UnitySDK) and can be added to your Unity project.
+
+Gamebeast will soon be available on the Unity Asset Store for easier installation.
+
+## Start the SDK and Configure API Key
+The next step of getting your data on the Gamebeast dashboard is to start the SDK and configure your API key.
+
+To start the SDK, you'll need to add the following code to a script in your project:
+
+```cs filename="gamebeast_setup.cs" copy numbered
+using UnityEngine;
+using Gamebeast.Runtime;
+
+public class GamebeastStarter : MonoBehaviour
+{
+    void Start()
+    {
+        GamebeastSdk.Init("abcd-efgh-1234-5678");
+    }
+}
+```
+
+### Creating an API key
+Next, we'll need to configure the API key for your project.
+
+To do this, we'll need to go back to the project settings page on the dashboard.
+
+1. Navigate to the project settings page by clicking "Project Settings" on the left side of the dashboard.
+2. Create a new API key by pressing the "Create API Key" button.
+3. Copy the API key before closing the popup. **Make sure to hold onto this because you won't be able to see it again!**
+4. In the Unity script, replace the placeholder key with the API key you just created.
+
+```cs
+GamebeastSdk.Init("abcd-efgh-1234-5678"); // Replace with your API key.
+```
+
+And that's it! You're now ready to start sending data to the Gamebeast dashboard.
+
+To start using the SDK in your code, check out the [SDK Services](/Unity/API) documentation.

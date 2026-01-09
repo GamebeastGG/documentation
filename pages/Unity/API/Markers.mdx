@@ -1,0 +1,29 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Markers
+
+This API is used to send markers to the Gamebeast platform. 
+  
+```cs
+var gamebeastMarkers = GamebeastSdk.Markers;
+```
+
+## SendMarker(markerType, value)
+<ReturnType/>
+This method sends a marker with the specified value to Gamebeast.
+
+<ParameterList>
+    <Parameter name="markerType" type="string">
+        The name of the marker.
+    </Parameter>
+    <Parameter name="value" type="object">
+        The value of the marker.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+gamebeastMarkers.SendMarker("RoundEnded", new { Score = 600, Map = "Office", Duration = 120 });
+```
