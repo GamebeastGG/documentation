@@ -1,7 +1,7 @@
 module.exports = {
   "Configurations": "Remote Configurations",
   "Experiments": "Experiments (A/B Testing)", 
-  "Engagement": "Engagement Markers",
+  "Markers": "Engagement Markers",
   "QueryBuilder" : "Boards & Query Builder",
   "Heatmaps": "Heatmaps",
   "Retention" : "Retention Queries",
