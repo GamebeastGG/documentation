@@ -1,0 +1,61 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Configs
+
+This API is used to retrieve configurations from the Gamebeast platform. 
+
+For more information about Configurations, visit the [Configurations Guide](/Features/Configurations).
+  
+```cs
+var gamebeastConfigs = GamebeastSdk.Configs;
+```
+
+## Get(configKey)
+<ReturnType type="object" />
+This method retrieves a configuration value from Gamebeast.
+
+<ParameterList>
+    <Parameter name="configKey" type="string">
+        The key of the configuration to retrieve.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+public class ConfigExample
+{
+    public float myNumber;
+}
+
+var configValue = gamebeastConfigs.Get<ConfigExample>("exampleConfigKey");
+```
+
+## IsReady()
+<ReturnType type="bool" />
+
+This method checks if the configurations have been loaded and are ready to be accessed.
+
+### Usage
+```cs
+if (gamebeastConfigs.IsReady()) 
+{
+    // Configurations are ready to be accessed, do something.
+}
+```
+
+## OnReady
+<ReturnType type="Action" />
+
+This event is triggered when the configurations are fully loaded and ready to be accessed.
+
+### Usage
+```cs
+gamebeastConfigs.OnReady += () => 
+{
+    // Configurations are ready to be accessed, do something.
+};
+```
+
+
