@@ -1,0 +1,92 @@
+import ReturnType from '/components/ReturnType.tsx';
+import {ParameterList, Parameter} from '/components/Parameter.tsx';
+import RunContext from '/components/RunContext.tsx';
+
+# Configs
+
+This API is used to retrieve configurations from the Gamebeast platform. 
+
+For more information about Configurations, visit the [Configurations Guide](/Features/Configurations).
+  
+```cs
+var gamebeastConfigs = GamebeastSdk.Configs;
+```
+
+## Get(configKey)
+<ReturnType type="object" />
+This method retrieves a configuration value from Gamebeast.
+
+<ParameterList>
+    <Parameter name="configKey" type="string">
+        The key of the configuration to retrieve.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+public class ConfigExample
+{
+    public float myNumber;
+}
+
+var configValue = gamebeastConfigs.Get<ConfigExample>("exampleConfigKey");
+```
+
+## IsReady()
+<ReturnType type="bool" />
+
+This method checks if the configurations have been loaded and are ready to be accessed.
+
+### Usage
+```cs
+if (gamebeastConfigs.IsReady()) 
+{
+    // Configurations are ready to be accessed, do something.
+}
+```
+
+## OnChanged(configName, callback)
+<ReturnType type="IDisposable" />
+
+This event is triggered whenever a specific configuration changes.
+
+<ParameterList>
+    <Parameter name="configName" type="string">
+        The name of the configuration to listen for changes.
+    </Parameter>
+    <Parameter name="callback" type="Action&lt;object&gt;">
+        The callback function to be invoked when the configuration changes.
+        The updated configuration value is passed as a parameter to the callback.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+GamebeastSdk.Configs.OnChanged("MyConfig", () =>
+{
+    var newValue = GamebeastSdk.Configs.Get<string>("MyConfig");
+    Debug.Log($"Config 'MyConfig' changed! New value: {newValue}");
+});
+```
+
+## OnReady(callback)
+<ReturnType type="IDisposable" />
+
+This callback is triggered when the configurations are fully loaded and ready to be accessed.
+If the configurations are already loaded, the event will be invoked immediately upon subscription.
+
+<ParameterList>
+    <Parameter name="callback" type="Action">
+        The callback function to be invoked when configurations are ready.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+gamebeastConfigs.OnReady(() =>
+{
+    // Configurations are ready to be accessed, do something.
+});
+```
+
+
