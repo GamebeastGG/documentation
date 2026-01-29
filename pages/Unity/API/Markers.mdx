@@ -29,3 +29,24 @@ This method sends a marker with the specified value to Gamebeast.
 ```cs
 gamebeastMarkers.SendMarker("RoundEnded", new { Score = 600, Map = "Office", Duration = 120 });
 ```
+
+## SendUserMarker(userId, markerType, value)
+<ReturnType/>
+This method sends a marker for a specific user with the specified value to Gamebeast.
+
+<ParameterList>
+    <Parameter name="userId" type="string">
+        The ID of the user.
+    </Parameter>
+    <Parameter name="markerType" type="string">
+        The name of the marker.
+    </Parameter>
+    <Parameter name="value" type="object">
+        The value of the marker.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+gamebeastMarkers.SendUserMarker("user123", "ItemPurchased", new { ItemID = "sword_001", Price = 150 });
+``` 

@@ -45,17 +45,48 @@ if (gamebeastConfigs.IsReady())
 }
 ```
 
-## OnReady
-<ReturnType type="Action" />
+## OnChanged(configName, callback)
+<ReturnType type="IDisposable" />
 
-This event is triggered when the configurations are fully loaded and ready to be accessed.
+This event is triggered whenever a specific configuration changes.
+
+<ParameterList>
+    <Parameter name="configName" type="string">
+        The name of the configuration to listen for changes.
+    </Parameter>
+    <Parameter name="callback" type="Action&lt;object&gt;">
+        The callback function to be invoked when the configuration changes.
+        The updated configuration value is passed as a parameter to the callback.
+    </Parameter>
+</ParameterList>
 
 ### Usage
 ```cs
-gamebeastConfigs.OnReady += () => 
+GamebeastSdk.Configs.OnChanged("MyConfig", () =>
+{
+    var newValue = GamebeastSdk.Configs.Get<string>("MyConfig");
+    Debug.Log($"Config 'MyConfig' changed! New value: {newValue}");
+});
+```
+
+## OnReady(callback)
+<ReturnType type="IDisposable" />
+
+This callback is triggered when the configurations are fully loaded and ready to be accessed.
+If the configurations are already loaded, the event will be invoked immediately upon subscription.
+
+<ParameterList>
+    <Parameter name="callback" type="Action">
+        The callback function to be invoked when configurations are ready.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```cs
+gamebeastConfigs.OnReady(() =>
 {
     // Configurations are ready to be accessed, do something.
-};
+});
 ```
 
 
