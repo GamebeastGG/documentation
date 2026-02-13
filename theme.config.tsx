@@ -24,19 +24,10 @@ const config: DocsThemeConfig = {
     <>
       <title>{title ? title + ' | Documentation': 'Optimize Your Game'} </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="Gamebeast Docs" />
+      <meta property="og:title" content={title ? title + ' | Documentation' : 'Optimize Your Game'} />
       <meta property="og:description" content="Optimize your game with Gamebeast" />
-      <meta
-          name="og:title"
-          content={title ? title + ' | Documentation' : ' Optimize Your Game'}
-        />
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link
-          rel="icon"
-          href="/favicon.ico"
-          type="image/x-icon"
-          media="(prefers-color-scheme: dark)"
-        />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="apple-touch-icon" href="/logo-white.png" />
     </>
   )},
   project: {
