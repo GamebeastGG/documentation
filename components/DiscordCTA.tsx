@@ -19,7 +19,7 @@ const DiscordCTA = () => {
         <h1 className="text-xl font-semibold pb-2 mt-4">Join our Discord to stay up to date!</h1>
         <div className="bg-gb-light-bg2 dark:bg-[#1e1f22] rounded-md p-4 mt-2 w-min pr-6 border-[1px] border-gb-light-bg3 dark:border-gb-bg2">
             <div className="flex flex-row items-center gap-x-3">
-                <Image src={theme == "dark" ? "/logo-white.svg" : "/logo-color.svg"} alt="Gamebeast Icon" width={50} height={50} className="rounded-md" />
+                <Image src={"/logo-white.svg"} alt="Gamebeast Icon" width={50} height={50} className="rounded-md" />
                 <div className="flex flex-col">
                     <p className="font-semibold text-lg text-gb-text-dark dark:text-slate-200 ">{discordData?.name || "Gamebeast"}</p>
                     <p className="text-sm text-[#8d8d8d] text-nowrap">{discordData?.presence_count || "∞"} Members Online</p>

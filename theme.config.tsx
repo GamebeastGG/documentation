@@ -10,7 +10,7 @@ const config: DocsThemeConfig = {
       <picture>
         <source srcSet="/logo-white.svg" media="(prefers-color-scheme: dark)" />
         <img
-          src="/logo-color.svg"
+          src="/logo-white.svg"
           alt="Gamebeast"
           style={{ height: 34, width: 'auto', display: 'block' }}
         />
