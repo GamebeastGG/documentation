@@ -142,9 +142,11 @@ GamebeastMarkers:OnMarkersFailed(function(failedMarkers)
 end)
 ```
 
-## :RetryFailedMarkers(markers)
+## :RetryFailedMarkersAsync(markers)
 <ReturnType type="boolean"/>
 This method retries sending a list of markers that previously failed to send to Gamebeast.
+
+This method will yeild and return true if the retry was successful, and false if it failed again.
 
 <ParameterList>
     <Parameter name="markers" type="{{[string] : any}}">
@@ -156,5 +158,10 @@ This method retries sending a list of markers that previously failed to send to 
 ```lua
 local FailedMarkersFromDatastore = getFailedMarkers()
 
-GamebeastMarkers:RetryFailedMarkers(FailedMarkersFromDatastore)
+local success = GamebeastMarkers:RetryFailedMarkersAsync(FailedMarkersFromDatastore)
+if success then
+    print("Successfully retried failed markers.")
+else
+    print("Failed to send markers.")
+end
 ```
