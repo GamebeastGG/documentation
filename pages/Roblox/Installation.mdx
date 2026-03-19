@@ -74,6 +74,13 @@ If your experience has in-game purchases, its important to track them accurately
 
 See the [:SendNewPurchaseGrantedMarker](/Roblox/API/Markers#sendnewpurchasegrantedmarkerreceiptinfo-position) method to track purchases accurately.
 
+### Optionally retrying failed Markers
+
+In the event that a marker fails to send to the Gamebeast Dashboard, the SDK has a callback method to notify you of failed markers. 
+You can use this callback to retry sending failed markers if you want to ensure that all of your data gets to the dashboard.
+
+See the [:OnMarkersFailed](/Roblox/API/Markers#onmarkersfailedcallback) method for more information on how to use this callback and retry failed markers.
+
 ### Creating an API key
 Next, we'll need to configure the API key for your project.
 

@@ -122,3 +122,39 @@ MarketplaceService.ProcessReceipt = function(receiptInfo)
 	end
 end
 ```
+
+## :OnMarkersFailed(callback)
+<ReturnType type="RBXScriptConnection"/>
+This method fires a callback with a raw list of markers that failed to send to Gamebeast.
+
+<ParameterList>
+    <Parameter name="callback" type="(failedMarkers : {{[string] : any}}) -> ()">
+        The callback function that will be fired if markers fail to send.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+GamebeastMarkers:OnMarkersFailed(function(failedMarkers)
+    print("The following markers failed to send to Gamebeast:", failedMarkers)
+
+    -- Save to DataStore for retrying later, etc.
+end)
+```
+
+## :RetryFailedMarkers(markers)
+<ReturnType type="boolean"/>
+This method retries sending a list of markers that previously failed to send to Gamebeast.
+
+<ParameterList>
+    <Parameter name="markers" type="{{[string] : any}}">
+        The list of markers that failed to send. This should be the raw list of markers received from the `:OnMarkersFailed` callback.
+    </Parameter>
+</ParameterList>
+
+### Usage
+```lua
+local FailedMarkersFromDatastore = getFailedMarkers()
+
+GamebeastMarkers:RetryFailedMarkers(FailedMarkersFromDatastore)
+```
