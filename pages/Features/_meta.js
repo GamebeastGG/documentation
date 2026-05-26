@@ -8,5 +8,6 @@ module.exports = {
   "Funnels" : "Funnels",
   "UserCohorts" : "User Cohorts",
   "UserManagement": "User Management",
+  "DataManagement": "Data Management",
   "Jobs": "Dashboard Jobs"
 }

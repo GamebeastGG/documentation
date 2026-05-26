@@ -1,0 +1,35 @@
+# Data Management
+
+The **Data Management** page in the Gamebeast dashboard is where you manage the data Gamebeast collects for your application, including handling player privacy requests such as GDPR data deletion.
+
+## GDPR compliance
+
+Under GDPR (and similar privacy regulations), a player can ask you to delete the personal data you hold about them. Gamebeast lets you flag the affected user IDs for deletion and removes their data within **30 days** of the request.
+
+You can submit deletion requests in two ways:
+
+- **From the dashboard** — for one-off requests handled by your team.
+- **From the API** — for automating requests from your own backend, such as a "delete my account" flow in your game.
+
+Both surfaces create the same kind of request, and each request is scoped to a single application.
+
+### From the dashboard
+
+Open the **Data Management** page in the [Gamebeast dashboard](https://dashboard.gamebeast.gg), enter the [user IDs](/Features/UserManagement) you want to remove, and submit. Gamebeast queues the request and deletes the flagged users within 30 days.
+
+### From the API
+
+To automate deletion requests, send a `POST` to the GDPR deletion-requests endpoint for your application. Authenticate with an organization-scoped client API key passed as a bearer token. You can flag multiple user IDs in a single request.
+
+```bash
+curl -X POST https://api.gamebeast.gg/application/YOUR_APPLICATION_ID/gdpr/deletion-requests \
+  -H "Authorization: Bearer client_<your-api-key>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userIds": ["player-123", "player-456"]
+  }'
+```
+
+The response includes a `deadlineAt` timestamp — 30 days from when the request was created — marking the deletion deadline.
+
+For the full request and response schema, parameters, and error codes, see the [GDPR API reference](https://api.gamebeast.gg/reference/#tag/gdpr/POST/application/{applicationId}/gdpr/deletion-requests).
