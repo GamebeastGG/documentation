@@ -23,7 +23,7 @@ To automate deletion requests, send a `POST` to the GDPR deletion-requests endpo
 
 ```bash
 curl -X POST https://api.gamebeast.gg/application/YOUR_APPLICATION_ID/gdpr/deletion-requests \
-  -H "Authorization: Bearer client_<your-api-key>" \
+  -H "Authorization: Bearer <your-api-key>" \
   -H "Content-Type: application/json" \
   -d '{
     "userIds": ["player-123", "player-456"]
